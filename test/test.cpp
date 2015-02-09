@@ -22,11 +22,14 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
+#include <vector>
 #include <stdlib.h>
+#include <conio.h>
 
 #include "sidplayfp\sidplayfp.h"
 #include "sidplayfp\SidTune.h"
 #include "sidplayfp\sidbuilder.h"
+#include "..\builders\innov-builder\innov.h"
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -61,6 +64,8 @@ int main(int argc, char* argv[])
     char basic[8192];
     char chargen[4096];
 
+    std::vector<short> buffer(8000);
+
     loadRom(KERNAL_PATH, kernal);
     loadRom(BASIC_PATH, basic);
     loadRom(CHARGEN_PATH, chargen);
@@ -91,7 +96,29 @@ int main(int argc, char* argv[])
         name.append("start.prg");
     }*/
 
-    printf("\nTune name: %s\n\n", name.c_str());
+    //printf("\nTune name: %s\n\n", name.c_str());
+
+    //printf("Playing %s, press any key to exit...", name.c_str());
+
+    // Set up a SID builder
+    std::auto_ptr<InnovBuilder> inn(new InnovBuilder("Innovation SSI-2001 builder"));
+
+    //printf("_DEBUG: SID builder class has been created.\n");
+
+    // Get the number of SIDs supported by the engine
+    unsigned int maxsids = 1; //(m_engine.info()).maxsids();
+
+    // Create SID emulators
+    inn->create(maxsids);
+
+    // Check if builder is ok
+    if (!inn->getStatus())
+    {
+        std::cerr << inn->error() << std::endl;
+        return -1;
+    }
+
+    //printf("_DEBUG: SID builder has been started. MAXSIDS = %u\n", maxsids);
 
     std::auto_ptr<SidTune> tune(new SidTune(name.c_str()));
 
@@ -101,7 +128,25 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+ 
+
     tune->selectSong(0);
+
+   // Configure the engine
+    SidConfig cfg;
+    cfg.frequency = 44100;
+    cfg.samplingMethod = SidConfig::INTERPOLATE;
+    cfg.fastSampling = false;
+    cfg.playback = SidConfig::MONO;
+    cfg.sidEmulation = inn.get();
+    
+    if (!m_engine.config(cfg))
+    {
+        std::cerr <<  m_engine.error() << std::endl;
+        return -1;
+    }
+    
+    //printf("_DEBUG: engine has been configured.\n");
 
     if (!m_engine.load(tune.get()))
     {
@@ -109,10 +154,24 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    printf("\nStarting m_engine.play()...\n\n");
+    
+
+
+
+    m_engine.play(0, 0);
 
     for (;;)
     {
-        m_engine.play(0, 0);
+        if(!m_engine.isPlaying () || kbhit())
+        {
+            break;
+        }
     }
+
+    // flush keyboard buffer
+    while(kbhit())
+    {
+        getch();
+    }
+    //printf("\n\n");
 }

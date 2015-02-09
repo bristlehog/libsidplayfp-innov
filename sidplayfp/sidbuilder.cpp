@@ -40,7 +40,7 @@ sidemu *sidbuilder::lock (EventContext *env, SidConfig::sid_model_t model)
 
     // Unable to locate free SID
     m_status = false;
-    m_errorBuffer.assign(name ()).append("ERROR: No available SIDs to lock");
+    m_errorBuffer.assign(name ()).append(" ERROR: No available SIDs to lock");
     return 0;
 }
 

@@ -4,10 +4,10 @@ projectIdent
 VpeMain
 1
 WRect
-13520
--490
-7680
-9210
+0
+0
+10320
+10097
 2
 MProject
 3
@@ -31,7 +31,7 @@ WRect
 0
 0
 5680
-4260
+4238
 0
 0
 9
@@ -39,5 +39,5 @@ WFileName
 13
 lib_dos32.tgt
 0
-16
+11
 7

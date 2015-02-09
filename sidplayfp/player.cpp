@@ -31,6 +31,10 @@
 #include "psiddrv.h"
 #include "romCheck.h"
 
+#if defined(_CMAKE_WATCOM_VERSION)
+#include <conio.h>
+#endif
+
 SIDPLAYFP_NAMESPACE_START
 
 
@@ -173,19 +177,24 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
     if (!m_tune)
         return 0;
 
-    printf("_DEBUG_: before m_mixer.begin()\n");
+    //printf("_DEBUG: Player::play | count = %lu \n", count);        
+
+    //printf("_DEBUG: before m_mixer.begin()\n");
 
     m_mixer.begin(buffer, count);
+	
+    //printf("_DEBUG: Player::play | count = %lu \n", count);   	
 
     // Start the player loop
     m_isPlaying = true;
 
     if (m_mixer.getSid(0))
     {
-        printf("_DEBUG_: m_mixer.getSid(0) == TRUE \n");
+        //printf("_DEBUG: m_mixer.getSid(0) == TRUE \n");
         
         if (count)
         {
+            //printf("_DEBUG: count != 0 \n");
             while (m_isPlaying && m_mixer.notFinished())
             {
                 for (int i = 0; i < sidemu::OUTPUTBUFFERSIZE; i++)
@@ -195,23 +204,43 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
                 m_mixer.doMix();
             }
             count = m_mixer.samplesGenerated();
+			//printf("_DEBUG: Player::play | count = %lu \n", count);
         }
         else
         {
+            //printf("_DEBUG: Player::play | count == 0 \n");
             int size = m_c64.getMainCpuSpeed() / m_cfg.frequency;
-            while (m_isPlaying && --size)
-            {
-                for (int i = 0; i < sidemu::OUTPUTBUFFERSIZE; i++)
-                    m_c64.getEventScheduler()->clock();
 
-                m_mixer.clockChips();
-                m_mixer.resetBufs();
+            //printf("_DEBUG: Player::play | size (initial) = %d\n", size);
+            
+            while (m_isPlaying && !kbhit())// && --size)
+            {
+			
+			    //printf("_DEBUG: Player::play | size = %d\n", size);
+
+
+				//printf("_DEBUG: Player::play | calling m_c64.getEventScheduler()->clock() %d times\n", sidemu::OUTPUTBUFFERSIZE);
+                for (int i = 0; i < sidemu::OUTPUTBUFFERSIZE; i++)
+				{
+					m_c64.getEventScheduler()->clock();
+					
+					/*for(int j = 0; j < 10; j++)
+					{
+						// wait
+					}*/
+				}
+				
+				//printf("_DEBUG: Player::play | calling clockChips()\n");				
+                //m_mixer.clockChips();
+				//printf("_DEBUG: Player::play | calling resetBufs()\n");				
+                //m_mixer.resetBufs();
+				//printf("_DEBUG: Player::play | clockChips() and resetBufs() completed\n");
             }
         }
     }
     else
     {
-        printf("_DEBUG_: m_mixer.getSid(0) == FALSE \n");
+        //printf("_DEBUG: m_mixer.getSid(0) == FALSE \n");
                
         int size = m_c64.getMainCpuSpeed() / m_cfg.frequency;
         while (m_isPlaying && --size)
@@ -223,7 +252,7 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
 
     if (!m_isPlaying)
     {
-        printf("_DEBUG_: m_isPlaying == FALSE \n");
+        //printf("_DEBUG_: m_isPlaying == FALSE \n");
         try
         {
             initialise();
@@ -231,7 +260,7 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
         catch (configError const &e) {}
     }
 
-    printf("_DEBUG_: before return(count) \n");
+    //printf("_DEBUG: before return (count = %lu)\n", count);
 
     return count;
 }

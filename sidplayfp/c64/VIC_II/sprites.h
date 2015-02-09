@@ -110,7 +110,7 @@ public:
      */
     void checkDma(unsigned int rasterY, uint8_t regs[0x40])
     {
-        const uint8_t y = (uint8_t)rasterY;
+        const uint8_t y = rasterY & 0xff;
         uint8_t mask = 1;
         for (unsigned int i = 0; i < SPRITES; i++, mask <<= 1)
         {
@@ -157,9 +157,9 @@ public:
      *
      * @param val sprites bitmask
      */
-    bool isDma(uint8_t val) const
+    bool isDma(unsigned int val) const
     {
-        return 0 != dma & val;
+        return dma & val;
     }
 };
 
