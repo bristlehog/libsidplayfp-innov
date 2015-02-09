@@ -1,0 +1,25 @@
+!define BLANK ""
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5\MD5&
+.obj" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils&
+\MD5\MD5.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5
+ *wpp386 MD5.cpp -i="C:\WATCOM/h;C:\WATCOM/h/nt" -w4 -e25 -dMD5_TEST -zq -od&
+ -d2 -6r -bt=nt -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5\sid&
+md5.exe" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\ut&
+ils\MD5\MD5.obj" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5
+ @%write sidmd5.lk1 FIL MD5.obj
+ @%append sidmd5.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b sidmd5.imp 
+ @%append sidmd5.lk1 LIBR sidmd5.imp
+!endif
+!ifneq BLANK ""
+ @%append sidmd5.lk1 
+!endif
+ *wlink name sidmd5 d all sys nt op m op maxe=25 op q op symf @sidmd5.lk1
+

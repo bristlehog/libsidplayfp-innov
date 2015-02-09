@@ -1,0 +1,26 @@
+demo.cpp(22): Error! E059: col(26) unable to open 'sys/soundcard.h'
+demo.cpp(23): Error! E059: col(22) unable to open 'sys/ioctl.h'
+demo.cpp(34): Error! E059: col(32) unable to open 'sidplayfp/sidplayfp.h'
+demo.cpp(35): Error! E059: col(30) unable to open 'sidplayfp/SidTune.h'
+demo.cpp(36): Error! E059: col(30) unable to open 'sidplayfp/SidInfo.h'
+demo.cpp(37): Error! E059: col(39) unable to open 'sidplayfp/builders/residfp.h'
+demo.cpp(77): Error! E006: col(15) syntax error; probable cause: missing ';'
+demo.cpp(84): Error! E029: col(5) symbol 'm_engine' has not been declared
+demo.cpp(92): Error! E029: col(19) symbol 'ReSIDfpBuilder' has not been declared
+demo.cpp(92): Error! E498: col(42) syntax error before 'ReSIDfpBuilder'; probable cause: incorrectly spelled type name
+demo.cpp(95): Error! E029: col(29) symbol 'm_engine' has not been declared
+demo.cpp(98): Error! E029: col(5) symbol 'rs' has not been declared
+demo.cpp(108): Error! E029: col(19) symbol 'SidTune' has not been declared
+demo.cpp(108): Error! E498: col(37) syntax error before 'SidTune'; probable cause: incorrectly spelled type name
+demo.cpp(111): Error! E029: col(10) symbol 'tune' has not been declared
+demo.cpp(118): Error! E029: col(9) symbol 'tune' has not been declared
+demo.cpp(121): Error! E006: col(15) syntax error; probable cause: missing ';'
+demo.cpp(122): Error! E029: col(8) symbol 'cfg' has not been declared
+demo.cpp(123): Error! E241: col(37) class or namespace 'SidConfig' has not been declared
+demo.cpp(123): Error! E926: col(37) syntax error: 'SidConfig::INTERPOLATE' has not been declared as a member
+demo.cpp(125): Error! E241: col(31) class or namespace 'SidConfig' has not been declared
+demo.cpp(125): Error! E926: col(31) syntax error: 'SidConfig::MONO' has not been declared as a member
+demo.cpp(142): Error! E029: col(16) symbol 'AFMT_S16_LE' has not been declared
+demo.cpp(143): Error! E029: col(19) symbol 'SNDCTL_DSP_SETFMT' has not been declared
+demo.cpp(145): Error! E029: col(19) symbol 'SNDCTL_DSP_CHANNELS' has not been declared
+demo.cpp(147): Error! E133: col(19) too many errors: compilation aborted

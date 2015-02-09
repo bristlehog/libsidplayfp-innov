@@ -1,0 +1,238 @@
+!define BLANK ""
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\c64.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\c&
+64.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\c64.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r&
+ -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos6526.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c&
+64\CIA\mos6526.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\CIA\mos6526.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan&
+ -d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\timer.obj" : &
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64&
+\CIA\timer.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\CIA\timer.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -&
+d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\tod.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\C&
+IA\tod.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\CIA\tod.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2&
+ -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos6510.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c&
+64\CPU\mos6510.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\CPU\mos6510.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan&
+ -d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mmu.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\m&
+mu.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\mmu.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r&
+ -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos656x.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c&
+64\VIC_II\mos656x.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\c64\VIC_II\mos656x.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -ote&
+xan -d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\config.obj" :&
+ "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\co&
+nfig.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\config.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r &
+-bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\EventSchedule&
+r.obj" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidp&
+layfp\EventScheduler.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\EventScheduler.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan &
+-d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mixer.obj" : &
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\mix&
+er.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\mixer.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r -&
+bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\player.obj" :&
+ "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\pl&
+ayer.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\player.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r &
+-bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\psiddrv.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\p&
+siddrv.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\psiddrv.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r&
+ -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\reloc65.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\r&
+eloc65.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\reloc65.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r&
+ -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidbuilder.ob&
+j" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayf&
+p\sidbuilder.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidbuilder.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 &
+-6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidConfig.obj&
+" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp&
+\SidConfig.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\SidConfig.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -&
+6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp.obj&
+" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp&
+\sidplayfp.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidplayfp.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -&
+6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTune.obj" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\S&
+idTune.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\SidTune.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r&
+ -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\MUS.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtu&
+ne\MUS.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\MUS.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2&
+ -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\p00.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtu&
+ne\p00.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\p00.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2&
+ -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\prg.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtu&
+ne\prg.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\prg.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2&
+ -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\PSID.obj" : "&
+C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidt&
+une\PSID.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\PSID.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d&
+2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTuneBase.o&
+bj" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplay&
+fp\sidtune\SidTuneBase.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\SidTuneBase.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -ot&
+exan -d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTuneTools.&
+obj" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidpla&
+yfp\sidtune\SidTuneTools.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 sidplayfp\sidtune\SidTuneTools.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -o&
+texan -d2 -6r -bt=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test.obj" : "&
+C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\test.cpp"&
+ .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 test\test.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r -bt=dos&
+ -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\MD5.obj" : "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5\MD5.c&
+pp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 utils\MD5\MD5.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -otexan -d2 -6r -bt&
+=dos -fo=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidtest.exe" &
+: "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\c64.obj" "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos6526.obj" "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\timer.obj" "C:\&
+Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\tod.obj" "C:\User&
+s\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos6510.obj" "C:\User&
+s\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mmu.obj" "C:\Users\ha&
+lfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mos656x.obj" "C:\Users\ha&
+lfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\config.obj" "C:\Users\hal&
+fbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\EventScheduler.obj" "C:\Us&
+ers\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\mixer.obj" "C:\User&
+s\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\player.obj" "C:\Users&
+\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\psiddrv.obj" "C:\Users&
+\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\reloc65.obj" "C:\Users&
+\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidbuilder.obj" "C:\Us&
+ers\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidConfig.obj" "C:\&
+Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp.obj" "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTune.obj" "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\MUS.obj" "C:\Us&
+ers\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\p00.obj" "C:\Users\&
+halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\prg.obj" "C:\Users\half&
+bot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\PSID.obj" "C:\Users\halfbot&
+\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTuneBase.obj" "C:\Users\hal&
+fbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\SidTuneTools.obj" "C:\User&
+s\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test.obj" "C:\Users\h&
+alfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\MD5.obj" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ @%write sidtest.lk1 FIL c64.obj,mos6526.obj,timer.obj,tod.obj,mos6510.obj,m&
+mu.obj,mos656x.obj,config.obj,EventScheduler.obj,mixer.obj,player.obj,psiddr&
+v.obj,reloc65.obj,sidbuilder.obj,SidConfig.obj,sidplayfp.obj,SidTune.obj,MUS&
+.obj,p00.obj,prg.obj,PSID.obj,SidTuneBase.obj,SidTuneTools.obj,test.obj,MD5.&
+obj
+ @%append sidtest.lk1 
+ *wlink name sidtest d all sys causeway op m op maxe=25 op q op symf @sidtes&
+t.lk1
+

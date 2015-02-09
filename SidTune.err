@@ -1,0 +1,5 @@
+sidplayfp\sidtune\SidTuneBase.h(121): Warning! W726: col(69) no reference to formal parameter 'md5'
+sidplayfp\sidtune\SidTuneBase.h(121): Note! N393: col(69) included from sidplayfp\SidTune.cpp(23)
+sidplayfp\sidtune\SidTuneBase.h(121): Note! N392: col(41) definition: 'char * md5' in 'char const * SidTuneBase::createMD5( char * )'
+C:\WATCOM\h\memory(301): Warning! W379: col(16) delete expression will invoke a non-virtual destructor
+C:\WATCOM\h\memory(301): Note! N635: col(16) template class member instantiation was in: sidplayfp\sidtune\SidTuneBase.h(125) (col 36)

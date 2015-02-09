@@ -1,0 +1,7 @@
+sidplayfp\c64\CIA\timer.h(216): Warning! W389: col(64) integral value may be truncated during assignment or initialization
+sidplayfp\c64\CIA\timer.h(216): Note! N393: col(64) included from sidplayfp\c64\CIA\mos6526.h(28)
+sidplayfp\c64\CIA\timer.h(216): Note! N393: col(64) included from sidplayfp\c64\CIA\mos6526.cpp(24)
+sidplayfp\c64\CIA\mos6526.cpp(209): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\CIA\mos6526.cpp(209): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\CIA\mos6526.cpp(211): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\CIA\mos6526.cpp(211): Warning! W389: col(35) integral value may be truncated during assignment or initialization

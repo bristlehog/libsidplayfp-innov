@@ -1,0 +1,20 @@
+!define BLANK ""
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test.obj" : "&
+C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\test.cpp"&
+ .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ *wpp386 test\test.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -6r -bt=dos -fo&
+=.obj -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test32.exe" :&
+ "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test.obj" "C&
+:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\lib_dos32.lib" &
+.AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2
+ @%write test32.lk1 FIL test.obj
+ @%append test32.lk1 LIBR lib_dos32.lib
+ *wlink name test32 d all sys causeway op m op maxe=25 op q op symf @test32.&
+lk1
+

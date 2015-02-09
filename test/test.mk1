@@ -1,0 +1,18 @@
+!define BLANK ""
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\demo.obj&
+" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\demo&
+.cpp" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test
+ *wpp386 demo.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -6r -bt=dos -fo=.obj&
+ -mf -xs -xr
+
+"C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\test.exe&
+" : "C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\demo&
+.obj" .AUTODEPEND
+ @C:
+ cd C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test
+ @%write test.lk1 FIL demo.obj
+ @%append test.lk1 
+ *wlink name test d all sys pmodew op m op maxe=25 op q op symf @test.lk1
+

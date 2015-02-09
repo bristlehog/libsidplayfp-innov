@@ -1,0 +1,43 @@
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Warning! W726: col(73) no reference to formal parameter 'addr'
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Note! N393: col(73) included from sidplayfp\c64\c64.h(33)
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Note! N393: col(73) included from sidplayfp\player.h(37)
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Note! N393: col(73) included from sidplayfp\player.cpp(24)
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Note! N392: col(30) definition: 'unsigned short addr' in 'void DisconnectedBusBank::poke( unsigned short, unsigned char )'
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Warning! W726: col(73) no reference to formal parameter 'data'
+sidplayfp\c64\Banks\DisconnectedBusBank.h(41): Note! N392: col(55) definition: 'unsigned char data' in 'void DisconnectedBusBank::poke( unsigned short, unsigned char )'
+sidplayfp\c64\Banks\DisconnectedBusBank.h(44): Warning! W726: col(62) no reference to formal parameter 'addr'
+sidplayfp\c64\Banks\DisconnectedBusBank.h(44): Note! N392: col(33) definition: 'unsigned short addr' in 'unsigned char DisconnectedBusBank::peek( unsigned short )'
+sidplayfp\c64\c64sid.h(35): Warning! W004: col(23) base class 'Bank' does not have a virtual destructor
+sidplayfp\c64\c64sid.h(35): Warning! W004: col(23) base class 'component' does not have a virtual destructor
+sidplayfp\c64\Banks\NullSid.h(50): Warning! W849: col(1) base class virtual function has not been overridden
+sidplayfp\c64\Banks\NullSid.h(50): Note! N850: col(1) virtual function is 'c64sid::reset'
+sidplayfp\c64\c64sid.h(40): Note! N392: col(10) definition: 'void c64sid::reset( void )'
+sidplayfp\c64\c64sid.h(40): Note! N881: col(10) cannot be called with a 'NullSid *'
+sidplayfp\c64\Banks\ExtraSidBank.h(65): Warning! W004: col(29) base class 'Bank' does not have a virtual destructor
+sidplayfp\c64\CIA\timer.h(216): Warning! W389: col(64) integral value may be truncated during assignment or initialization
+sidplayfp\c64\c64cia.h(115): Warning! W389: col(15) integral value may be truncated during assignment or initialization
+sidplayfp\c64\c64cia.h(120): Warning! W389: col(21) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\lightpen.h(74): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\lightpen.h(74): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\lightpen.h(79): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\lightpen.h(79): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\sprites.h(113): Warning! W389: col(25) integral value may be truncated during assignment or initialization
+sidplayfp\c64\VIC_II\sprites.h(162): Warning! W389: col(20) integral value may be truncated during assignment or initialization
+sidplayfp\c64\Banks\ZeroRAMBank.h(136): Warning! W368: col(24) conditional expression in if statement is always false
+sidplayfp\c64\Banks\ZeroRAMBank.h(138): Warning! W013: col(22) unreachable code
+sidplayfp\sidemu.h(98): Warning! W726: col(80) no reference to formal parameter 'systemfreq'
+sidplayfp\sidemu.h(97): Note! N392: col(33) definition: 'float systemfreq' in 'void sidemu::sampling( float, float, SidConfig::<enum>, bool )'
+sidplayfp\sidemu.h(98): Warning! W726: col(80) no reference to formal parameter 'outputfreq'
+sidplayfp\sidemu.h(97): Note! N392: col(62) definition: 'float outputfreq' in 'void sidemu::sampling( float, float, SidConfig::<enum>, bool )'
+sidplayfp\sidemu.h(98): Warning! W726: col(80) no reference to formal parameter 'method'
+sidplayfp\sidemu.h(98): Note! N392: col(38) definition: 'SidConfig::<enum> method' in 'void sidemu::sampling( float, float, SidConfig::<enum>, bool )'
+sidplayfp\sidemu.h(98): Warning! W726: col(80) no reference to formal parameter 'fast'
+sidplayfp\sidemu.h(98): Note! N392: col(62) definition: 'bool fast' in 'void sidemu::sampling( float, float, SidConfig::<enum>, bool )'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Warning! W726: col(77) no reference to formal parameter 'address'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Note! N392: col(30) definition: 'unsigned short address' in 'void romBank<8192>::poke( unsigned short, unsigned char )'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Warning! W726: col(77) no reference to formal parameter 'value'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Note! N392: col(58) definition: 'unsigned char value' in 'void romBank<8192>::poke( unsigned short, unsigned char )'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Warning! W726: col(77) no reference to formal parameter 'address'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Note! N392: col(30) definition: 'unsigned short address' in 'void romBank<4096>::poke( unsigned short, unsigned char )'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Warning! W726: col(77) no reference to formal parameter 'value'
+sidplayfp\c64\Banks\SystemROMBanks.h(67): Note! N392: col(58) definition: 'unsigned char value' in 'void romBank<4096>::poke( unsigned short, unsigned char )'

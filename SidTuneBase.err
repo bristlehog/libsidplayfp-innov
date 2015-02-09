@@ -1,0 +1,9 @@
+sidplayfp\sidtune\SidTuneBase.h(121): Warning! W726: col(69) no reference to formal parameter 'md5'
+sidplayfp\sidtune\SidTuneBase.h(121): Note! N393: col(69) included from sidplayfp\sidtune\SidTuneBase.cpp(23)
+sidplayfp\sidtune\SidTuneBase.h(121): Note! N392: col(41) definition: 'char * md5' in 'char const * SidTuneBase::createMD5( char * )'
+sidplayfp\sidtune\SidTuneBase.cpp(164): Warning! W389: col(36) integral value may be truncated during assignment or initialization
+sidplayfp\sidtune\SidTuneBase.cpp(239): Warning! W472: col(41) expression with side effect in sizeof discarded
+C:\WATCOM\h\memory(301): Warning! W379: col(16) delete expression will invoke a non-virtual destructor
+C:\WATCOM\h\memory(301): Note! N635: col(16) template class member instantiation was in: sidplayfp\sidtune\SidTuneBase.h(125) (col 36)
+C:\WATCOM\h\vector(453): Warning! W014: col(1) no reference to symbol 'ERR_NOT_ENOUGH_MEMORY'
+sidplayfp\sidtune\SidTuneBase.cpp(50): Note! N392: col(12) definition: 'char const ERR_NOT_ENOUGH_MEMORY[38]'

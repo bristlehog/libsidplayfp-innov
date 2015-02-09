@@ -1,0 +1,4 @@
+sidplayfp-1.3.0\src\player.h(208): Warning! W004: col(30) base class 'Event' does not have a virtual destructor
+sidplayfp-1.3.0\src\player.h(208): Note! N393: col(30) included from sidplayfp-1.3.0\src\main.cpp(22)
+C:\WATCOM\h\memory(301): Warning! W546: col(16) delete of a pointer to an undefined type
+C:\WATCOM\h\memory(301): Note! N635: col(16) template class member instantiation was in: sidplayfp-1.3.0\src\..\..\sidplayfp\SidTune.h(48) (col 32)

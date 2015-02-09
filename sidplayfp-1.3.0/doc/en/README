@@ -1,0 +1,12 @@
+Convert docbook to man page
+
+> xmlto man <file>.xml
+
+
+Convert man page to text file
+
+> xmlto txt <file>.xml
+
+or
+
+> man <manual> | col -b > <file>.txt

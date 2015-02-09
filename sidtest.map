@@ -1,0 +1,1565 @@
+Open Watcom Linker Version 1.9
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       14/12/13 14:37:15
+Executable Image: sidtest.exe
+creating a CauseWay executable
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0002:00000000        0001e2f0
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+BEGTEXT                CODE           AUTO           0001:00000000   00000010
+_TEXT                  CODE           AUTO           0001:00000010   00050b33
+_NULL                  BEGDATA        DGROUP         0002:00000000   00000004
+_AFTERNULL             BEGDATA        DGROUP         0002:00000004   00000000
+CONST                  DATA           DGROUP         0002:00000004   00001240
+CONST2                 DATA           DGROUP         0002:00001250   0000a8c8
+_DATA                  DATA           DGROUP         0002:0000bb20   000022b0
+XIB                    DATA           DGROUP         0002:0000ddd0   00000000
+XI                     DATA           DGROUP         0002:0000ddd0   00000066
+XIE                    DATA           DGROUP         0002:0000de36   00000000
+YIB                    DATA           DGROUP         0002:0000de36   00000000
+YI                     DATA           DGROUP         0002:0000de36   0000002a
+YIE                    DATA           DGROUP         0002:0000de60   00000000
+TIB                    DATA           DGROUP         0002:0000de60   00000000
+TI                     DATA           DGROUP         0002:0000de60   00000000
+TIE                    DATA           DGROUP         0002:0000de60   00000000
+DATA                   DATA           DGROUP         0002:0000de60   00000000
+_BSS                   BSS            DGROUP         0002:0000de60   0000041e
+c_common               BSS            DGROUP         0002:0000e280   00000061
+STACK                  STACK          DGROUP         0002:0000e2f0   00010000
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: c64.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\c64.cpp)
+0001:00001b50  near std::exception::exception()
+0001:00001bb0  near std::exception::exception( std::exception const near & )
+0001:00001c20  near std::exception::~exception()
+0001:00001ce0  char const near * near std::exception::what() const
+0001:00001d40  near Bank::~Bank()
+0001:00001d70+ char unsigned near IOBank::peek( short unsigned )
+0001:00001dc0+ void near IOBank::poke( short unsigned, char unsigned )
+0001:00001e10+ void near ColorRAMBank::poke( short unsigned, char unsigned )
+0001:00001e50+ char unsigned near ColorRAMBank::peek( short unsigned )
+0001:00001e80+ void near DisconnectedBusBank::poke( short unsigned, char unsigned )
+0001:00001ea0+ char unsigned near DisconnectedBusBank::peek( short unsigned )
+0001:00001ed0  near component::~component()
+0001:00001f00+ void near c64sid::reset()
+0001:00001f30+ void near c64sid::poke( short unsigned, char unsigned )
+0001:00001f70+ char unsigned near c64sid::peek( short unsigned )
+0001:00001fb0+ near NullSid::NullSid()
+0001:00002090+ near NullSid::~NullSid()
+0001:000021c0+ void near NullSid::reset( char unsigned )
+0001:000021e0+ void near NullSid::write( char unsigned, char unsigned )
+0001:00002200+ char unsigned near NullSid::read( char unsigned )
+0001:00002230+ char unsigned near SidBank::peek( short unsigned )
+0001:00002270+ void near SidBank::poke( short unsigned, char unsigned )
+0001:000022b0  char const near * near std::_ow::str_exception::what() const
+0001:00002330+ near ExtraSidBank::~ExtraSidBank()
+0001:00002430+ char unsigned near ExtraSidBank::peek( short unsigned )
+0001:00002490+ void near ExtraSidBank::poke( short unsigned, char unsigned )
+0001:000024f0+ void near EventScheduler::schedule( Event near &, __int64, __anonymous_enum )
+0001:000025d0+ void near EventScheduler::schedule( Event near &, __int64 )
+0001:00002690+ __int64 near EventScheduler::getTime( __anonymous_enum ) const
+0001:000026f0+ __int64 near EventScheduler::getTime( __int64, __anonymous_enum ) const
+0001:00002740+ __anonymous_enum near EventScheduler::phase() const
+0001:00002770+ char unsigned near c64cpu::cpuRead( short unsigned )
+0001:000027b0+ void near c64cpu::cpuWrite( short unsigned, char unsigned )
+0001:00002820  void near MOS6526::portA()
+0001:00002840  void near MOS6526::portB()
+0001:00002860+ void near c64cia1::intrrupt( bool )
+0001:000028b0+ void near c64cia1::portB()
+0001:00002a50+ void near c64cia1::poke( short unsigned, char unsigned )
+0001:00002b00+ char unsigned near c64cia1::peek( short unsigned )
+0001:00002b50+ void near c64cia1::reset()
+0001:00002b80+ void near c64cia2::intrrupt( bool )
+0001:00002c60+ void near c64cia2::poke( short unsigned, char unsigned )
+0001:00002ca0+ char unsigned near c64cia2::peek( short unsigned )
+0001:00002ce0+ void near c64vic::intrrupt( bool )
+0001:00002d30+ void near c64vic::setBA( bool )
+0001:00002e90+ void near c64vic::poke( short unsigned, char unsigned )
+0001:00002ee0+ char unsigned near c64vic::peek( short unsigned )
+0001:00002f30+ near MMU::~MMU()
+0001:00003040+ near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::iterator_base::iterator_base( std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::iterator_base const near & )
+0001:00003080+ char unsigned near c64::cpuRead( short unsigned )
+0001:000030e0+ void near c64::cpuWrite( short unsigned, char unsigned )
+0001:00003140+ void near c64::interruptNMI()
+0001:00003170+ void near c64::interruptRST()
+0001:000031a0+ void near c64::interruptIRQ( bool )
+0001:00003200+ void near c64::setBA( bool )
+0001:00003260+ void near c64::lightpen( bool )
+0002:0000e280+ getInstance near getInstance::NullSid near * near getInstance()::.0::nullsid
+0001:00000010+ double near c64::getCpuFreq( c64::__anonymous_enum )
+0001:00000060  near c64::c64()
+0001:00000870+ void near c64::resetIoBank()
+0001:00000db0  void near c64::reset()
+0001:00000fb0  void near c64::setModel( c64::__anonymous_enum )
+0001:000010e0  void near c64::setBaseSid( c64sid near * )
+0001:000011b0  bool near c64::addExtraSid( c64sid near *, int )
+0001:000032a0+ near c64vic::~c64vic()
+0001:00003380+ near c64cia2::~c64cia2()
+0001:00003560+ near c64cia1::~c64cia1()
+0001:00003740+ near c64cpu::~c64cpu()
+0001:000037c0+ near EventScheduler::~EventScheduler()
+0001:00003800+ near ExtraSidBank::ExtraSidBank()
+0001:000038e0  near std::length_error::~length_error()
+0001:000039f0  near std::logic_error::~logic_error()
+0001:00003b00  near std::_ow::str_exception::~str_exception()
+0001:00003c10+ near SidBank::~SidBank()
+0001:00003c50+ near DisconnectedBusBank::~DisconnectedBusBank()
+0001:00003c90+ near ColorRAMBank::~ColorRAMBank()
+0001:00003cd0+ near IOBank::~IOBank()
+0001:00003d10  ExtraSidBank::resetSID near std::for_each<c64sid near * near * near,ExtraSidBank::resetSID near >( c64sid near * near *, c64sid near * near *, ExtraSidBank::resetSID )
+0001:00003d70+ near std::for_each<std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::iterator near,c64::resetSID near >( RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,_ow::TreePairWrapper<int near,ExtraSidBank near * near > near ::iterator
+0001:00003ed0  near std::allocator<char near >::~allocator()
+0001:00003f00  near std::allocator<c64sid near * near >::~allocator()
+0001:00003f30+ near std::allocator<std::pair<int const near,ExtraSidBank near * near > near >::~allocator()
+0001:00003f60  near std::allocator<std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::Node near >::~allocator()
+0001:00003f90  near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::~RedBlackTree()
+0001:00004030  void near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::clear()
+0001:000041c0+ std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::iterator near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::find( int const near & )
+0001:000043e0  RedBlackTree<int near,less<> near ::Node near * near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::walkRight( std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::Node near * )
+0001:000044a0  RedBlackTree<int near,less< near ::Node near * near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::walkLeft( std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::Node near * )
+0001:00004560+ near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::insert( std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::iterator, std::pair<int const near,ExtraSidBank near * near > const near &,
+0001:00005280  near std::map<int near,ExtraSidBank near * near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near > near >::~map()
+0001:000052c0+ near std::map<int near,ExtraSidBank near * near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near > near >::map( std::less<int near > const near &, std::allocator<std::pair<int const near,ExtraSidBank near * near > near > const near & )
+0001:00005440  near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::basic_string( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near & )
+0001:00005530  near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::~basic_string()
+0001:000055e0+ near std::vector<c64sid near * near,std::allocator<c64sid near * near > near >::vector( std::allocator<c64sid near * near > const near & )
+0001:00005690  near std::vector<c64sid near * near,std::allocator<c64sid near * near > near >::~vector()
+0001:00005780  void near std::vector<c64sid near * near,std::allocator<c64sid near * near > near >::push_back( c64sid near * const near & )
+0001:00005810+ void near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::insBalTransform( std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::Node near * )
+0001:00005d70+ pair<RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,TreePairWrapper<int near > near ::iterator near  near std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::unbalancedInsert( std::pair<int const near,ExtraSidBank near * near > const near & )
+0001:000069b0  char near * near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::alloc( int unsigned, int unsigned near & )
+0001:00006a20  c64sid near * near * near std::vector<c64sid near * near,std::allocator<c64sid near * near > near >::alloc( int unsigned, int unsigned near & )
+0001:00006a90  void near std::vector<c64sid near * near,std::allocator<c64sid near * near > near >::reserve( int unsigned )
+0001:00006db0  near std::length_error::length_error( std::length_error const near & )
+0001:00006f10  near std::logic_error::logic_error( std::logic_error const near & )
+0001:00007010  near std::_ow::str_exception::str_exception( std::_ow::str_exception const near & )
+0001:000070c0  c64sid near * near * near std::uninitialized_copy<c64sid near * near * near,c64sid near * near * near >( c64sid near * near *, c64sid near * near *, c64sid near * near * )
+0001:000071c0+ near std::allocator<std::_ow::RedBlackTree<int near,std::less<int near > near,std::allocator<std::pair<int const near,ExtraSidBank near * near > near > near,std::_ow::TreePairWrapper<int near,ExtraSidBank near * near > near >::Node near >:::00007pair  * near * near std::uninitialized_copy<c64sid near *>( std::allocator<std::pair<int const near,ExtraSidBank near * near > near > const near & )
+0001:000071f0  near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::basic_string( char const near *, std::allocator<char near > const near & )
+0002:000019f0  int unsigned const near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::npos
+0002:00001bb0  bool const near std::numeric_limits<int unsigned near >::is_specialized
+0002:00001bc0  int const near std::numeric_limits<int unsigned near >::digits
+0002:00001bd0  int const near std::numeric_limits<int unsigned near >::digits10
+0002:00001be0  bool const near std::numeric_limits<int unsigned near >::is_integer
+0002:00001bf0  bool const near std::numeric_limits<int unsigned near >::is_exact
+0002:0000e288  bool const near std::numeric_limits<int unsigned near >::is_signed
+0002:0000e28c  int const near std::numeric_limits<int unsigned near >::min_exponent
+0002:0000e290  int const near std::numeric_limits<int unsigned near >::min_exponent10
+0002:0000e294  int const near std::numeric_limits<int unsigned near >::max_exponent
+0002:0000e298  int const near std::numeric_limits<int unsigned near >::max_exponent10
+0002:0000e29c  bool const near std::numeric_limits<int unsigned near >::has_infinity
+0002:0000e2a0  bool const near std::numeric_limits<int unsigned near >::has_quiet_NaN
+0002:00001c00  int const near std::numeric_limits<int unsigned near >::radix
+0002:0000e2a4  bool const near std::numeric_limits<int unsigned near >::has_signaling_NaN
+0002:0000e2a8  bool const near std::numeric_limits<int unsigned near >::has_denorm_loss
+0002:00001c10  std::float_denorm_style const near std::numeric_limits<int unsigned near >::has_denorm
+0002:00001c20  bool const near std::numeric_limits<int unsigned near >::is_bounded
+0002:0000e2ac  bool const near std::numeric_limits<int unsigned near >::is_iec559
+0002:0000e2b0  bool const near std::numeric_limits<int unsigned near >::traps
+0002:0000e2b4  bool const near std::numeric_limits<int unsigned near >::tinyness_before
+0002:00001c30  bool const near std::numeric_limits<int unsigned near >::is_modulo
+0002:0000e2b8  std::float_round_style const near std::numeric_limits<int unsigned near >::round_style
+0001:00001840  void near c64::clearSids()
+Module: mos6526.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\CIA\mos6526.cpp)
+0001:00008960+ near Event::Event( char const near * )
+0001:000089a0+ void near Timer::serialPort()
+0001:000073e0+ void near TimerA::underFlow()
+0001:00007410+ void near TimerA::serialPort()
+0001:00007440+ void near TimerB::underFlow()
+0001:00007470  near MOS6526::MOS6526( EventContext near * )
+0001:00007ed0+ void near MOS6526::serialPort()
+0001:00007f70+ void near MOS6526::clear()
+0001:00007fc0  void near MOS6526::reset()
+0001:000080a0  char unsigned near MOS6526::read( char unsigned )
+0001:000084b0  void near MOS6526::write( char unsigned, char unsigned )
+0001:00008720+ void near MOS6526::trigger()
+0001:00008770+ void near MOS6526::trigger( char unsigned )
+0001:00008810+ void near MOS6526::bTick()
+0001:00008860+ void near MOS6526::underflowA()
+0001:00008a20+ near EventCallback<MOS6526 near >::~EventCallback()
+0001:00008a60+ near TimerB::~TimerB()
+0001:00008ad0+ near TimerA::~TimerA()
+0001:00008b40+ near Tod::~Tod()
+0001:00008b80+ void near EventCallback<Timer near >::event()
+0001:00008bd0+ void near EventCallback<MOS6526 near >::event()
+0001:00008900+ void near MOS6526::underflowB()
+0001:00008930  void near MOS6526::todInterrupt()
+0002:0000bd08  char const near * near MOS6526::credit
+Module: timer.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\CIA\timer.cpp)
+0001:00008c20  void near Timer::setControlRegister( char unsigned )
+0001:00008c60  void near Timer::syncWithCpu()
+0001:00008d60  void near Timer::wakeUpAfterSyncWithCpu()
+0001:00008db0  void near Timer::event()
+0001:00008f30  void near Timer::cycleSkippingEvent()
+0001:00008fc0+ void near Timer::clock()
+0001:00009110  void near Timer::reset()
+0001:000091b0  void near Timer::latchLo( char unsigned )
+0001:00009220  void near Timer::latchHi( char unsigned )
+Module: tod.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\CIA\tod.cpp)
+0001:00009290  void near Tod::reset()
+0001:00009340  char unsigned near Tod::read( char unsigned )
+0001:000093c0  void near Tod::write( char unsigned, char unsigned )
+0001:000094c0  void near Tod::event()
+Module: mos6510.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\CPU\mos6510.cpp)
+0001:0000e640+ near MOS6510::ProcessorCycle::ProcessorCycle()
+0001:0000e6a0  void near endian_16lo8( short unsigned near &, char unsigned )
+0001:0000e6d0  void near endian_16hi8( short unsigned near &, char unsigned )
+0001:0000e710+ void near MOS6510::PushSR()
+0001:0000e820+ void near MOS6510::PopSR()
+0001:00009700+ void near MOS6510::eventWithoutSteals()
+0001:00009780+ void near MOS6510::eventWithSteals()
+0001:00009830  void near MOS6510::setRDY( bool )
+0001:00009900  void near MOS6510::triggerRST()
+0001:00009980  void near MOS6510::triggerNMI()
+0001:00009a40  void near MOS6510::triggerIRQ()
+0001:0000e9c0+ void near MOS6510::interruptsAndNextOpcode()
+0001:0000eab0+ void near MOS6510::fetchNextOpcode()
+0001:0000eb50+ void near MOS6510::IRQLoRequest()
+0001:0000ebb0+ void near MOS6510::IRQHiRequest()
+0001:0000ec20+ void near MOS6510::throwAwayFetch()
+0001:0000ec60+ void near MOS6510::throwAwayRead()
+0001:0000eca0+ void near MOS6510::FetchDataByte()
+0001:0000ecf0+ void near MOS6510::FetchLowAddr()
+0001:0000ed40+ void near MOS6510::FetchLowAddrX()
+0001:0000edb0+ void near MOS6510::FetchLowAddrY()
+0001:0000ee20+ void near MOS6510::FetchHighAddr()
+0001:0000ee90+ void near MOS6510::FetchHighAddrX()
+0001:0000ef40+ void near MOS6510::FetchHighAddrX2()
+0001:0000f000+ void near MOS6510::FetchHighAddrY()
+0001:0000f0b0+ void near MOS6510::FetchHighAddrY2()
+0001:0000f170+ void near MOS6510::FetchLowPointer()
+0001:0000f1c0+ void near MOS6510::FetchLowPointerX()
+0001:0000f210+ void near MOS6510::FetchHighPointer()
+0001:0000f280+ void near MOS6510::FetchLowEffAddr()
+0001:0000f2c0+ void near MOS6510::FetchHighEffAddr()
+0001:0000f360+ void near MOS6510::FetchHighEffAddrY()
+0001:0000f430+ void near MOS6510::FetchHighEffAddrY2()
+0001:0000f520+ void near MOS6510::FetchEffAddrDataByte()
+0001:0000f560+ void near MOS6510::PutEffAddrDataByte()
+0001:0000f5a0+ void near MOS6510::PushLowPC()
+0001:0000f650+ void near MOS6510::PushHighPC()
+0001:0000f700+ void near MOS6510::PopLowPC()
+0001:0000f7b0+ void near MOS6510::PopHighPC()
+0001:0000f870+ void near MOS6510::WasteCycle()
+0001:0000f890+ void near MOS6510::brkPushLowPC()
+0001:0000f9c0+ void near MOS6510::brk_instr()
+0001:0000fae0+ void near MOS6510::cld_instr()
+0001:0000fbe0+ void near MOS6510::cli_instr()
+0001:0000fd20+ void near MOS6510::jmp_instr()
+0001:0000fe20+ void near MOS6510::pha_instr()
+0001:0000feb0+ void near MOS6510::rti_instr()
+0001:0000ffb0+ void near MOS6510::rts_instr()
+0001:00010000+ void near MOS6510::sed_instr()
+0001:00010100+ void near MOS6510::sei_instr()
+0001:00010220+ void near MOS6510::sta_instr()
+0001:00010270+ void near MOS6510::stx_instr()
+0001:000102c0+ void near MOS6510::sty_instr()
+0001:00010310+ void near MOS6510::axa_instr()
+0001:000103f0+ void near MOS6510::axs_instr()
+0001:00010450+ void near MOS6510::say_instr()
+0001:00010530+ void near MOS6510::xas_instr()
+0001:00010610+ void near MOS6510::adc_instr()
+0001:000108d0+ void near MOS6510::and_instr()
+0001:00010a10+ void near MOS6510::ane_instr()
+0001:00010b70+ void near MOS6510::asl_instr()
+0001:00010c20+ void near MOS6510::asla_instr()
+0001:00010d80+ void near MOS6510::bcc_instr()
+0001:00010f30+ void near MOS6510::bcs_instr()
+0001:000110e0+ void near MOS6510::beq_instr()
+0001:00011290+ void near MOS6510::bit_instr()
+0001:000113e0+ void near MOS6510::bmi_instr()
+0001:00011590+ void near MOS6510::bne_instr()
+0001:00011740+ void near MOS6510::bpl_instr()
+0001:000118f0+ void near MOS6510::bvc_instr()
+0001:00011aa0+ void near MOS6510::bvs_instr()
+0001:00011c50+ void near MOS6510::clc_instr()
+0001:00011d50+ void near MOS6510::clv_instr()
+0001:00011e50+ void near MOS6510::cmp_instr()
+0001:00011fc0+ void near MOS6510::cpx_instr()
+0001:00012130+ void near MOS6510::cpy_instr()
+0001:000122a0+ void near MOS6510::dec_instr()
+0001:00012340+ void near MOS6510::dex_instr()
+0001:00012480+ void near MOS6510::dey_instr()
+0001:000125c0+ void near MOS6510::eor_instr()
+0001:00012700+ void near MOS6510::inc_instr()
+0001:000127a0+ void near MOS6510::inx_instr()
+0001:000128e0+ void near MOS6510::iny_instr()
+0001:00012a20+ void near MOS6510::lda_instr()
+0001:00012b60+ void near MOS6510::ldx_instr()
+0001:00012ca0+ void near MOS6510::ldy_instr()
+0001:00012de0+ void near MOS6510::lsr_instr()
+0001:00012e90+ void near MOS6510::lsra_instr()
+0001:00012ff0+ void near MOS6510::ora_instr()
+0001:00013130+ void near MOS6510::pla_instr()
+0001:00013210+ void near MOS6510::plp_instr()
+0001:00013300+ void near MOS6510::rol_instr()
+0001:000133d0+ void near MOS6510::rola_instr()
+0001:00013540+ void near MOS6510::ror_instr()
+0001:00013610+ void near MOS6510::rora_instr()
+0001:00013780+ void near MOS6510::sbx_instr()
+0001:00013900+ void near MOS6510::sbc_instr()
+0001:00013b30+ void near MOS6510::sec_instr()
+0001:00013c30+ void near MOS6510::shs_instr()
+0001:00013d20+ void near MOS6510::tax_instr()
+0001:00013e60+ void near MOS6510::tay_instr()
+0001:00013fa0+ void near MOS6510::tsx_instr()
+0001:000140e0+ void near MOS6510::txa_instr()
+0001:00014220+ void near MOS6510::txs_instr()
+0001:00014320+ void near MOS6510::tya_instr()
+0001:00014460+ void near MOS6510::alr_instr()
+0001:000145d0+ void near MOS6510::anc_instr()
+0001:00014730+ void near MOS6510::arr_instr()
+0001:000149c0+ void near MOS6510::aso_instr()
+0001:00014a80+ void near MOS6510::dcm_instr()
+0001:00014b50+ void near MOS6510::ins_instr()
+0001:00014ce0+ void near MOS6510::las_instr()
+0001:00014e50+ void near MOS6510::lax_instr()
+0001:00014fa0+ void near MOS6510::lse_instr()
+0001:00015060+ void near MOS6510::oal_instr()
+0001:000151c0+ void near MOS6510::rla_instr()
+0001:000152a0+ void near MOS6510::rra_instr()
+0001:000169c0+ near EventCallback<MOS6510 near >::~EventCallback()
+0001:00016a00+ void near EventCallback<MOS6510 near >::event()
+0001:00009b10  void near MOS6510::clearIRQ()
+0001:00009b80+ void near MOS6510::illegal_instr()
+0001:00009ba0  near MOS6510::MOS6510( EventContext near * )
+0001:0000e3f0+ void near MOS6510::Initialise()
+0001:0000e520  void near MOS6510::reset()
+0001:0000e620  void near MOS6510::debug( bool, __iobuf near * )
+0002:0000bd90  char const near * near MOS6510::credit
+Module: mmu.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\mmu.cpp)
+0001:00017050+ char unsigned near SystemRAMBank::peek( short unsigned )
+0001:00017080+ void near SystemRAMBank::poke( short unsigned, char unsigned )
+0001:000170b0+ char unsigned near ZeroRAMBank::peek( short unsigned )
+0001:00017210+ void near ZeroRAMBank::poke( short unsigned, char unsigned )
+0001:00017530+ char unsigned near MMU::getLastReadByte() const
+0001:00017560+ __int64 near MMU::getPhi2Time() const
+0001:000175b0+ char unsigned near MMU::readMemByte( short unsigned )
+0001:00017600+ short unsigned near MMU::readMemWord( short unsigned )
+0001:00017690+ void near MMU::writeMemByte( short unsigned, char unsigned )
+0001:000176e0+ void near MMU::writeMemWord( short unsigned, short unsigned )
+0001:00017750+ void near MMU::fillRam( short unsigned, char unsigned, int unsigned )
+0001:00017790+ void near MMU::fillRam( short unsigned, char unsigned const near *, int unsigned )
+0001:000177e0+ void near MMU::installResetHook( short unsigned )
+0001:00017890+ void near MMU::installBasicTrap( short unsigned )
+0001:00017960+ void near MMU::setBasicSubtune( char unsigned )
+0001:00017c40+ void near romBank<8192>::poke( short unsigned, char unsigned )
+0001:00017c60+ char unsigned near romBank<8192>::peek( short unsigned )
+0001:00017c90+ void near romBank<4096>::poke( short unsigned, char unsigned )
+0001:00017cb0+ char unsigned near romBank<4096>::peek( short unsigned )
+0001:00016a50  near MMU::MMU( EventContext near *, Bank near * )
+0001:00016c40+ void near MMU::setCpuPort( int )
+0001:00016cc0+ void near MMU::updateMappingPHI2()
+0001:00016df0  void near MMU::reset()
+Module: mos656x.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\c64\VIC_II\mos656x.cpp)
+0001:0001c740+ void near MOS656X::badLineStateChange()
+0001:0001c790+ void near MOS656X::rasterYIRQEdgeDetector()
+0001:00017ce0  near MOS656X::MOS656X( EventContext near * )
+0001:000180b0  void near MOS656X::reset()
+0001:000181f0  void near MOS656X::chip( MOS656X::__anonymous_enum )
+0001:000182d0  char unsigned near MOS656X::read( char unsigned )
+0001:00018450  void near MOS656X::write( char unsigned, char unsigned )
+0001:00018860+ void near MOS656X::handleIrqState()
+0001:0001c960+ near EventCallback<MOS656X near >::~EventCallback()
+0001:0001c9a0+ void near EventCallback<MOS656X near >::event()
+0001:000188e0  void near MOS656X::event()
+0001:00018a10+ __int64 near MOS656X::clockPAL()
+0001:00019e00+ __int64 near MOS656X::clockNTSC()
+0001:0001b210+ __int64 near MOS656X::clockOldNTSC()
+0001:0001c620  void near MOS656X::triggerLightpen()
+0001:0001c710  void near MOS656X::clearLightpen()
+0002:00002528  MOS656X::__24c5kgmodel_data_t const near MOS656X::modelData[]
+0002:0000be94  char const near * near MOS656X::credit
+Module: config.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\config.cpp)
+0001:0001d370  short near Mixer::channel1MonoMix() const
+0001:0001c9f0  bool near __sidplayfp__::Player::config( SidConfig const near & )
+0001:0001ccd0+ c64::__anonymous_enum near __sidplayfp__::Player::c64model( SidConfig::__anonymous_enum, bool )
+0001:0001cef0+ SidConfig::__anonymous_enum near __sidplayfp__::Player::getModel( SidTuneInfo::__anonymous_enum, SidConfig::__anonymous_enum, bool )
+0001:0001d430  near __sidplayfp__::Player::configError::configError( __sidplayfp__::Player::configError const near & )
+0001:0001d460  near __sidplayfp__::Player::configError::~configError()
+0001:0001d490  near std::allocator<sidemu near * near >::~allocator()
+0001:0001d4c0  near std::allocator<short near * near >::~allocator()
+0001:0001d4f0  near std::allocator<long near >::~allocator()
+0001:0001d520  near std::allocator<short (near Mixer::* near)() const>::~allocator()
+0001:0001d550  near std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near >::~allocator()
+0001:0001d580  near std::allocator<std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::Node near >::~allocator()
+0001:0001d5b0  near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::basic_string( std::allocator<char near > const near & )
+0001:0001d660  std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::operator =( char const near * )
+0001:0001d700  near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::vector( std::allocator<sidemu near * near > const near & )
+0001:0001d7b0  near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::~vector()
+0001:0001d8a0  near std::vector<short near * near,std::allocator<short near * near > near >::vector( std::allocator<short near * near > const near & )
+0001:0001d950  near std::vector<short near * near,std::allocator<short near * near > near >::~vector()
+0001:0001da40  near std::vector<long near,std::allocator<long near > near >::vector( std::allocator<long near > const near & )
+0001:0001daf0  near std::vector<long near,std::allocator<long near > near >::~vector()
+0001:0001dbe0  near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::vector( std::allocator<short (near Mixer::* near)() const> const near & )
+0001:0001dc90  near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::~vector()
+0001:0001dd70  void near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::push_back( short (near Mixer::* const near &)() const)
+0001:0001de30  near std::vector<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near >::vector( std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > const near & )
+0001:0001dee0  near std::vector<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near >::~vector()
+0001:0001dfd0  void near std::vector<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near >::push_back( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near & )
+0001:0001e050  near std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::~RedBlackTree()
+0001:0001e0f0  void near std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::clear()
+0001:0001e280  RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,allocator<sidemu near * near > near ::Node near * near std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::walkRight( std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::Node near * )
+0001:0001e340  RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,::allocator<sidemu near * near > near ::Node near * near std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::walkLeft( std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::Node near * )
+0001:0001e400  near std::set<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near > near >::set( std::less<sidemu near * near > const near &, std::allocator<sidemu near * near > const near & )
+0001:0001e580  void near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::replace_buffer( char const near *, int unsigned )
+0001:0001e620  sidemu near * near * near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::alloc( int unsigned, int unsigned near & )
+0001:0001e690  short near * near * near std::vector<short near * near,std::allocator<short near * near > near >::alloc( int unsigned, int unsigned near & )
+0001:0001e700  long near * near std::vector<long near,std::allocator<long near > near >::alloc( int unsigned, int unsigned near & )
+0001:0001e770  short (near Mixer::* near * near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::alloc( int unsigned, int unsigned near & ))() const
+0001:0001e7e0  void near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::reserve( int unsigned )
+0001:0001eb00  std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near * near std::vector<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near >::alloc( int unsigned, int unsigned near & )
+0001:0001eb70  void near std::vector<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::allocator<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near >::reserve( int unsigned )
+0001:0001eea0  short (near Mixer::* near * near std::uninitialized_copy<short (near Mixer::* near * near)() const,short (near Mixer::* near * near)() const>( short (near Mixer::* near *)() const, short (near Mixer::* near *)() const, short (near Mixer::* near *)() const))() const
+0001:0001f010  basic_string near * near std::uninitialized_copy<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near * near,std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near * near >( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near *, std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near *, std::basic_string<char near,std::ch
+0001:0001f120  near std::allocator<std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::Node near >:::0001f120  g sidemu near >s( std::allocator<sidemu near * near > const near & )
+0001:0001cf90+ void near __sidplayfp__::Player::sidRelease()
+0001:0001d070+ void near __sidplayfp__::Player::sidCreate( sidbuilder near *, SidConfig::__anonymous_enum, bool, int unsigned )
+0001:0001d290+ void near __sidplayfp__::Player::sidParams( double, int, SidConfig::__anonymous_enum, bool )
+Module: EventScheduler.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\EventScheduler.cpp)
+0001:0001f150  void near EventScheduler::reset()
+0001:0001f190  void near EventScheduler::cancel( Event near & )
+0001:0001f1f0  bool near EventScheduler::isPending( Event near & ) const
+Module: mixer.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\mixer.cpp)
+0001:0001fc70+ short near Mixer::channel1StereoMix() const
+0001:0001fcc0+ short near Mixer::channel2FromMonoMix() const
+0001:0001fd10+ short near Mixer::channel2FromStereoMix() const
+0001:0001f240+ void near clockChip( sidemu near * )
+0001:0001f270  void near Mixer::clockChips()
+0001:0001f2d0  void near Mixer::resetBufs()
+0001:0001f350  void near Mixer::doMix()
+0001:0001f810  void near Mixer::begin( short near *, long unsigned )
+0001:0001f850+ void near Mixer::updateParams()
+0001:0001fa70  void near Mixer::clearSids()
+0001:0001fdf0+ void (near * near std::for_each<sidemu near * near * near,void (near * near)( sidemu near * )>( sidemu near * near *, sidemu near * near *, void (near *)( )))( sidemu near * )
+0001:0001fe30+ bufferPos near std::for_each<sidemu near * near * near,bufferPos near >( sidemu near * near *, sidemu near * near *, bufferPos )
+0001:0001fe90+ bufferMove near std::for_each<short near * near * near,bufferMove near >( short near * near *, short near * near *, bufferMove )
+0001:0001ff20+ void near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::push_back( sidemu near * const near & )
+0001:0001ffb0+ void near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::clear()
+0001:00020010+ void near std::vector<short near * near,std::allocator<short near * near > near >::push_back( short near * const near & )
+0001:000200a0+ void near std::vector<short near * near,std::allocator<short near * near > near >::clear()
+0001:00020100+ void near std::vector<long near,std::allocator<long near > near >::resize( int unsigned, long )
+0001:000201c0+ void near std::vector<long near,std::allocator<long near > near >::push_back( long const near & )
+0001:00020250+ void near std::vector<long near,std::allocator<long near > near >::insert( long near *, int unsigned, long const near & )
+0001:00020780+ long near * near std::vector<long near,std::allocator<long near > near >::erase( long near *, long near * )
+0001:00020820+ void near std::vector<long near,std::allocator<long near > near >::clear()
+0001:00020880+ void near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::resize( int unsigned, short (near Mixer::*)() const)
+0001:00020940+ void near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::insert( short (near Mixer::* near *)() const, int unsigned, short (near Mixer::* const near &)() const)
+0001:00020ff0+ short (near Mixer::* near * near std::vector<short (near Mixer::* near)() const,std::allocator<short (near Mixer::* near)() const> near >::erase( short (near Mixer::* near *)() const, short (near Mixer::* near *)() const))() const
+0001:000210c0+ void near std::uninitialized_fill_n<long near * near,int unsigned near,long near >( long near *, int unsigned, long const near & )
+0001:000211c0+ void near std::uninitialized_fill_n<short (near Mixer::* near * near)() const,int unsigned near,short (near Mixer::* near)() const>( short (near Mixer::* near *)() const, int unsigned, short (near Mixer::* const near &)() const)
+0001:00021320+ long near * near std::uninitialized_copy<long near * near,long near * near >( long near *, long near *, long near * )
+0001:00021420+ void near std::vector<sidemu near * near,std::allocator<sidemu near * near > near >::reserve( int unsigned )
+0001:00021740+ void near std::vector<short near * near,std::allocator<short near * near > near >::reserve( int unsigned )
+0001:00021a60+ void near std::vector<long near,std::allocator<long near > near >::reserve( int unsigned )
+0001:00021d80+ sidemu near * near * near std::uninitialized_copy<sidemu near * near * near,sidemu near * near * near >( sidemu near * near *, sidemu near * near *, sidemu near * near * )
+0001:00021e80+ short near * near * near std::uninitialized_copy<short near * near * near,short near * near * near >( short near * near *, short near * near *, short near * near * )
+0001:0001faa0  void near Mixer::addSid( sidemu near * )
+0001:0001fb50  void near Mixer::setStereo( bool )
+0001:0001fbe0  bool near Mixer::setFastForward( int )
+0001:0001fc20  void near Mixer::setVolume( long, long )
+Module: player.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\player.cpp)
+0001:00026ed0  near SidInfo::~SidInfo()
+0001:00026f00+ char const near * near SidInfoImpl::name() const
+0001:00026f50+ char const near * near SidInfoImpl::version() const
+0001:00026fa0+ int unsigned near SidInfoImpl::numberOfCredits() const
+0001:00026fe0+ char const near * near SidInfoImpl::credits( int unsigned ) const
+0001:00027080+ int unsigned near SidInfoImpl::maxsids() const
+0001:000270b0+ int unsigned near SidInfoImpl::channels() const
+0001:000270e0+ short unsigned near SidInfoImpl::driverAddr() const
+0001:00027110+ short unsigned near SidInfoImpl::driverLength() const
+0001:00027140+ short unsigned near SidInfoImpl::powerOnDelay() const
+0001:00027170+ char const near * near SidInfoImpl::speedString() const
+0001:000271c0+ char const near * near SidInfoImpl::kernalDesc() const
+0001:00027210+ char const near * near SidInfoImpl::basicDesc() const
+0001:00027260+ char const near * near SidInfoImpl::chargenDesc() const
+0001:000272b0+ near c64::~c64()
+0001:00027b70+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near > near  near ::iterator_base::iterator_base
+0001:00021f80  near __sidplayfp__::Player::Player()
+0001:00023390  void near __sidplayfp__::Player::setRoms( char unsigned const near *, char unsigned const near *, char unsigned const near * )
+0001:00026440  bool near __sidplayfp__::Player::fastForward( int unsigned )
+0001:000264a0  void near __sidplayfp__::Player::initialise()
+0001:00027bb0+ near chargenCheck::~chargenCheck()
+0001:00027c00+ near basicCheck::~basicCheck()
+0001:00027c50+ near kernalCheck::~kernalCheck()
+0001:00027ca0+ near romCheck::~romCheck()
+0001:00027cf0+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,char_traits<char near > near  near  near ::Node::~Node
+0001:00027d30+ near std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near >::~pair()
+0001:00027d70+ near SidInfoImpl::~SidInfoImpl()
+0001:00027ec0+ near Mixer::~Mixer()
+0001:00027fb0+ near std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near >:::00027fb0+ :~Mixer() dI,char const near * near >npair( std::pair<char const near * near,char const near * near > const near & )
+0001:00028090  near std::allocator<char near >::allocator()
+0001:000280c0+ near std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near >::~allocator()
+0001:000280f0+ allocator<RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,near  near  near ::Node near ::~allocator
+0001:00028120  near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::basic_string( char const near *, int unsigned, std::allocator<char near > const near & )
+0001:000283e0+ near std::pair<char const near * near,char const near * near >::pair( char const near * const near &, char const near * const near & )
+0001:00028420+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,std::char_traits<char near > near,near  near  near ::~RedBlackTree
+0001:000284c0+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,std::char_traits<char near > near > near  near ::clear
+0001:00028670+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,std::char_traits<char near > near, near  near ::find
+0001:00028890+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,char_traits<near  near  near  near ::walkRight
+0001:00028950+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,char_traits<char near > near  near  near ::walkLeft
+0001:00028a10+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,std::char_traits<char near > near  near  near ::insert
+0001:00028ae0+ map<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,char const near * near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,RedBlackTree<basic_string<char near,std::char_traits<char near > near,allocator<char near > near
+0001:00028c60+ void near romBank<8192>::setVal( short unsigned, char unsigned )
+0001:00028c90+ char unsigned near romBank<8192>::getVal( short unsigned ) const
+0001:00028cc0+ void near * near romBank<8192>::getPtr( short unsigned ) const
+0001:00028d00+ void near romBank<8192>::set( char unsigned const near * )
+0001:00028d40+ bool near std::operator <char near,std::char_traits<char near > near,std::allocator<char near > near ><( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near &, std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near & )
+0001:00028de0+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near,near  near  near ::insBalTransform
+0001:00029340+ RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,std::allocator<std::pair<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near,char const near * near > near > near,TreePairWrapper<basic_string<char near, near  near ::unbalancedInsert
+0001:0002a0c0+ allocator<RedBlackTree<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near > near,allocator<pair<basic_string<char near,std::char_traits<char near > near,allocator<> near  const near  near  near ::Node near :::0002apair e<std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near,std::less<std::basic_string<
+0002:0000e2bc  char near sidmd5::char_traits::basic_string<char near,std::char_traits<char near > near,char_trai::.0::ss[]
+0001:00026770  bool near __sidplayfp__::Player::load( SidTune near * )
+0001:000267e0  void near __sidplayfp__::Player::mute( int unsigned, int unsigned, bool )
+0001:000268a0  long unsigned near __sidplayfp__::Player::play( short near *, long unsigned )
+0001:00026de0  void near __sidplayfp__::Player::stop()
+Module: psiddrv.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\psiddrv.cpp)
+0001:0002a0f0+ void near copyPoweronPattern( sidmemory near * )
+0001:0002a1e0+ char unsigned near psiddrv::iomap( short unsigned ) const
+0001:0002a270  bool near psiddrv::drvReloc()
+0001:0002a450  void near psiddrv::install( sidmemory near *, char unsigned ) const
+0002:0000bf90+ char unsigned near psid_driver[]
+Module: reloc65.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\reloc65.cpp)
+0001:0002a930+ int near read_options( char unsigned near * )
+0001:0002a980+ int near read_undef( char unsigned near * )
+0001:0002a9e0  near reloc65::reloc65()
+0001:0002aa50  void near reloc65::setReloc( reloc65::__anonymous_enum, int )
+0001:0002aaf0  void near reloc65::setExtract( reloc65::__anonymous_enum )
+0001:0002ab20  bool near reloc65::reloc( char unsigned near * near *, int near * )
+0001:0002ae70+ int near reloc65::reldiff( char unsigned )
+0001:0002af00+ char unsigned near * near reloc65::reloc_seg( char unsigned near *, int, char unsigned near * )
+0001:0002b0a0+ char unsigned near * near reloc65::reloc_globals( char unsigned near * )
+Module: sidbuilder.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidbuilder.cpp)
+0001:0002b600+ std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::iterator near std::_ow::RedBlackTree<sidemu near * near,std::less<sidemu near * near > near,std::allocator<sidemu near * near > near,std::_ow::TreeKeyWrapper<sidemu near * near > near >::find( sidemu near * const near & )
+0001:0002b820  std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::assign( char const near * )
+0001:0002b880  void near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::swap( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & )
+0001:0002b950  near std::allocator<char near >::allocator( std::allocator<char near > const near & )
+0001:0002b980  std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::append( char const near *, int unsigned )
+0001:0002b150  sidemu near * near sidbuilder::lock( EventContext near *, SidConfig::__anonymous_enum )
+0001:0002b390  void near sidbuilder::unlock( sidemu near * )
+0001:0002b460* void near sidbuilder::remove()
+Module: SidConfig.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\SidConfig.cpp)
+0001:0002bd10  near SidConfig::SidConfig()
+Module: sidplayfp.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidplayfp.cpp)
+0001:0002d3a0+ near Event::~Event()
+0001:0002d3d0+ near EventContext::~EventContext()
+0001:0002d400+ near c64env::~c64env()
+0001:0002d430+ near sidmemory::~sidmemory()
+0001:0002bda0  near sidplayfp::sidplayfp()
+0001:0002be00  near sidplayfp::~sidplayfp()
+0001:0002cf00* bool near sidplayfp::config( SidConfig const near & )
+0001:0002cf40* SidConfig const near & near sidplayfp::config() const
+0001:0002cf80* void near sidplayfp::stop()
+0001:0002cfb0  long unsigned near sidplayfp::play( short near *, long unsigned )
+0001:0002cff0  bool near sidplayfp::load( SidTune near * )
+0001:0002d030* SidInfo const near & near sidplayfp::info() const
+0001:0002d070* long unsigned near sidplayfp::time() const
+0001:0002d110  char const near * near sidplayfp::error() const
+0001:0002d150* bool near sidplayfp::fastForward( int unsigned )
+0001:0002d190* void near sidplayfp::mute( int unsigned, int unsigned, bool )
+0001:0002d1e0* void near sidplayfp::debug( bool, __iobuf near * )
+0001:0002d270* bool near sidplayfp::isPlaying() const
+0001:0002d2d0  void near sidplayfp::setRoms( char unsigned const near *, char unsigned const near *, char unsigned const near * )
+0001:0002d300* EventContext near * near sidplayfp::getEventContext()
+0001:0002d340* short unsigned near sidplayfp::getCia1TimerA() const
+Module: SidTune.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\SidTune.cpp)
+0001:0002d460  near SidTune::SidTune( char const near *, char const near * near *, bool )
+0001:0002d530* near SidTune::SidTune( char unsigned const near *, long unsigned )
+0001:0002d5e0+ near SidTune::~SidTune()
+0001:0002d720+ void near SidTune::setFileNameExtensions( char const near * near * )
+0001:0002d760+ void near SidTune::load( char const near *, bool )
+0001:0002d8b0+ void near SidTune::read( char unsigned const near *, long unsigned )
+0001:0002d9e0  int unsigned near SidTune::selectSong( int unsigned )
+0001:0002da50  SidTuneInfo const near * near SidTune::getInfo() const
+0001:0002dab0* SidTuneInfo const near * near SidTune::getInfo( int unsigned )
+0001:0002db20  bool near SidTune::getStatus() const
+0001:0002db60  char const near * near SidTune::statusString() const
+0001:0002dc80  near std::allocator<char unsigned near >::~allocator()
+0001:0002dcb0  near std::auto_ptr<SidTuneBase near >::~auto_ptr()
+0001:0002dd50  near std::vector<char unsigned near,std::allocator<char unsigned near > near >::~vector()
+0001:0002db90  bool near SidTune::placeSidTuneInC64mem( sidmemory near * )
+0001:0002dc10* char const near * near SidTune::createMD5( char near * )
+0002:0000c0c0+ char const near * near defaultFileNameExt[]
+0002:0000c0f4  char const near * near * near SidTune::fileNameExtensions
+Module: MUS.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\MUS.cpp)
+0001:000301a0  near SidTuneInfo::~SidTuneInfo()
+0001:000301d0  near SidTuneBase::~SidTuneBase()
+0001:00030440  char const near * near SidTuneBase::createMD5( char near * )
+0001:00030470+ near MUS::MUS()
+0001:00030500+ near MUS::~MUS()
+0001:0002de30+ bool near MUS::detect( char unsigned const near *, long unsigned, long unsigned near & )
+0001:0002eac0+ void near MUS::setPlayerAddress()
+0001:0002eb50+ void near MUS::acceptSidTune( char const near *, char const near *, std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, bool )
+0001:0002eba0+ bool near MUS::placeSidTuneInC64mem( sidmemory near * )
+0001:0002ebf0+ bool near MUS::mergeParts( std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:0002eda0+ void near MUS::installPlayer( sidmemory near * )
+0001:0002ef40* SidTuneBase near * near MUS::load( std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, bool )
+0001:00030770  near SmartPtr_sidtt<char unsigned const near >::~SmartPtr_sidtt()
+0001:00030880  near SidTuneBase::PetsciiToAscii::PetsciiToAscii()
+0001:00030950  near SidTuneBase::PetsciiToAscii::~PetsciiToAscii()
+0001:00030990  near loadError::loadError( loadError const near & )
+0001:000309c0  near loadError::~loadError()
+0001:000309f0  near SidTuneInfoImpl::~SidTuneInfoImpl()
+0001:00030b00+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::insert<char unsigned near * near >( char unsigned near *, char unsigned near *, char unsigned near * )
+0001:00030b50+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::helper_insert<char unsigned near * near >( char unsigned near *, char unsigned near *, char unsigned near *, std::tr1::integral_constant<bool near,0> )
+0001:00030b90  near std::allocator<char unsigned near >::allocator()
+0001:00030bc0  near std::auto_ptr<SidTuneInfoImpl near >::~auto_ptr()
+0001:00030d50+ near std::auto_ptr<MUS near >::auto_ptr( MUS near * )
+0001:00030d80+ near std::auto_ptr<MUS near >::~auto_ptr()
+0001:00030e20  near std::vector<char unsigned near,std::allocator<char unsigned near > near >::vector( std::allocator<char unsigned near > const near & )
+0001:00030ed0+ char unsigned near * near std::vector<char unsigned near,std::allocator<char unsigned near > near >::insert( char unsigned near *, char unsigned const near & )
+0001:000313c0+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::clear()
+0001:00031420  near SmartPtrBase_sidtt<char unsigned const near >::~SmartPtrBase_sidtt()
+0001:00031500  char unsigned const near * near SmartPtrBase_sidtt<char unsigned const near >::tellBegin() const
+0001:00031530  long unsigned near SmartPtrBase_sidtt<char unsigned const near >::tellLength() const
+0001:00031560  long unsigned near SmartPtrBase_sidtt<char unsigned const near >::tellPos() const
+0001:00031590  bool near SmartPtrBase_sidtt<char unsigned const near >::checkIndex( long unsigned )
+0001:000315e0  bool near SmartPtrBase_sidtt<char unsigned const near >::reset()
+0001:00031660  bool near SmartPtrBase_sidtt<char unsigned const near >::good()
+0001:000316a0  bool near SmartPtrBase_sidtt<char unsigned const near >::fail()
+0001:000316e0  void near SmartPtrBase_sidtt<char unsigned const near >::operator ++()
+0001:00031720  void near SmartPtrBase_sidtt<char unsigned const near >::operator ++( int )
+0001:00031760  void near SmartPtrBase_sidtt<char unsigned const near >::operator --()
+0001:000317a0  void near SmartPtrBase_sidtt<char unsigned const near >::operator --( int )
+0001:000317e0  void near SmartPtrBase_sidtt<char unsigned const near >::operator +=( long unsigned )
+0001:00031830  void near SmartPtrBase_sidtt<char unsigned const near >::operator -=( long unsigned )
+0001:00031870  char unsigned const near SmartPtrBase_sidtt<char unsigned const near >::operator *()
+0001:000318c0  char unsigned const near & near SmartPtrBase_sidtt<char unsigned const near >::operator []( long unsigned )
+0001:00031920  near SmartPtrBase_sidtt<char unsigned const near >::operator bool ()
+0001:00031960  char unsigned near * near std::vector<char unsigned near,std::allocator<char unsigned near > near >::alloc( int unsigned, int unsigned near & )
+0002:0000e2e0  bool const near std::tr1::integral_constant<bool near,0>::value
+0001:0002f050  SidTuneBase near * near MUS::load( std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, long unsigned, bool )
+0001:0002f640+ void near MUS::tryLoad( std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, SmartPtr_sidtt<char unsigned const near > near &, long unsigned, bool )
+Module: p00.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\p00.cpp)
+0001:000322d0+ near p00::p00()
+0001:00032360+ near p00::~p00()
+0001:000325d0+ near std::auto_ptr<p00 near >::auto_ptr( p00 near * )
+0001:00032600+ near std::auto_ptr<p00 near >::~auto_ptr()
+0001:000319d0  SidTuneBase near * near p00::load( char const near *, std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:00031eb0+ void near p00::load( char const near *, X00Header const near * )
+Module: prg.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\prg.cpp)
+0001:00032bd0+ near prg::prg()
+0001:00032c60+ near prg::~prg()
+0001:00032ed0  bool near std::equal<char const near * near,char const near * near,bool (near * near)( char, char )>( char const near *, char const near *, char const near *, bool (near *)())
+0001:00032f20+ near std::auto_ptr<prg near >::auto_ptr( prg near * )
+0001:00032f50+ near std::auto_ptr<prg near >::~auto_ptr()
+0001:000326a0  SidTuneBase near * near prg::load( char const near *, std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:00032b30+ void near prg::load()
+Module: PSID.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\PSID.cpp)
+0001:00035280+ near PSID::PSID()
+0001:00035310+ near PSID::~PSID()
+0001:00035580  near std::out_of_range::~out_of_range()
+0001:00035690+ near std::auto_ptr<PSID near >::auto_ptr( PSID near * )
+0001:000356c0+ near std::auto_ptr<PSID near >::~auto_ptr()
+0001:00035760+ int unsigned near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::copy( char near *, int unsigned, int unsigned ) const
+0001:000359d0  near std::out_of_range::out_of_range( std::out_of_range const near & )
+0001:00032ff0  SidTuneBase near * near PSID::load( std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:00033600+ void near PSID::tryLoad( std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:00034c30+ char const near * near PSID::createMD5( char near * )
+Module: SidTuneBase.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\SidTuneBase.cpp)
+0001:00038e10+ short unsigned near SidTuneInfoImpl::loadAddr() const
+0001:00038e40+ short unsigned near SidTuneInfoImpl::initAddr() const
+0001:00038e70+ short unsigned near SidTuneInfoImpl::playAddr() const
+0001:00038ea0+ int unsigned near SidTuneInfoImpl::songs() const
+0001:00038ed0+ int unsigned near SidTuneInfoImpl::startSong() const
+0001:00038f00+ int unsigned near SidTuneInfoImpl::currentSong() const
+0001:00038f30+ short unsigned near SidTuneInfoImpl::sidChipBase1() const
+0001:00038f60+ short unsigned near SidTuneInfoImpl::sidChipBase2() const
+0001:00038f90+ bool near SidTuneInfoImpl::isStereo() const
+0001:00038fe0+ int near SidTuneInfoImpl::songSpeed() const
+0001:00039010+ char unsigned near SidTuneInfoImpl::relocStartPage() const
+0001:00039040+ char unsigned near SidTuneInfoImpl::relocPages() const
+0001:00039070+ SidTuneInfo::__anonymous_enum near SidTuneInfoImpl::sidModel1() const
+0001:000390a0+ SidTuneInfo::__anonymous_enum near SidTuneInfoImpl::sidModel2() const
+0001:000390d0+ SidTuneInfo::__anonymous_enum near SidTuneInfoImpl::compatibility() const
+0001:00039100+ int unsigned near SidTuneInfoImpl::numberOfInfoStrings() const
+0001:00039140+ char const near * near SidTuneInfoImpl::infoString( int unsigned ) const
+0001:000391e0+ int unsigned near SidTuneInfoImpl::numberOfCommentStrings() const
+0001:00039220+ char const near * near SidTuneInfoImpl::commentString( int unsigned ) const
+0001:000392c0+ long unsigned near SidTuneInfoImpl::dataFileLen() const
+0001:000392f0+ long unsigned near SidTuneInfoImpl::c64dataLen() const
+0001:00039320+ SidTuneInfo::__anonymous_enum near SidTuneInfoImpl::clockSpeed() const
+0001:00039350+ char const near * near SidTuneInfoImpl::formatString() const
+0001:00039380+ bool near SidTuneInfoImpl::fixLoad() const
+0001:000393c0+ char const near * near SidTuneInfoImpl::path() const
+0001:00039410+ char const near * near SidTuneInfoImpl::dataFileName() const
+0001:00039460+ char const near * near SidTuneInfoImpl::infoFileName() const
+0001:00035b90  SidTuneBase near * near SidTuneBase::load( char const near *, char const near * near *, bool )
+0001:00035c00  SidTuneBase near * near SidTuneBase::read( char unsigned const near *, long unsigned )
+0001:00035c30  SidTuneInfo const near * near SidTuneBase::getInfo() const
+0001:00035c70  SidTuneInfo const near * near SidTuneBase::getInfo( int unsigned )
+0001:00035cb0  int unsigned near SidTuneBase::selectSong( int unsigned )
+0001:00035e30  bool near SidTuneBase::placeSidTuneInC64mem( sidmemory near * )
+0001:00035f70+ void near SidTuneBase::loadFile( char const near *, std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:000360c0  near SidTuneBase::SidTuneBase()
+0001:000367c0+ SidTuneBase near * near SidTuneBase::getFromStdIn()
+0001:00036970+ SidTuneBase near * near SidTuneBase::getFromBuffer( char unsigned const near *, long unsigned )
+0001:00036dd0  void near SidTuneBase::acceptSidTune( char const near *, char const near *, std::vector<char unsigned near,std::allocator<char unsigned near > near > near &, bool )
+0001:00037570+ void near SidTuneBase::createNewFileName( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near &, char const near *, char const near * )
+0001:000376b0+ SidTuneBase near * near SidTuneBase::getFromFiles( char const near *, char const near * near *, bool )
+0001:000386f0  void near SidTuneBase::convertOldStyleSpeedToTables( long unsigned, SidTuneInfo::__anonymous_enum )
+0001:000387c0+ bool near SidTuneBase::checkRelocInfo()
+0001:00038940+ void near SidTuneBase::resolveAddrs( char unsigned const near * )
+0001:000394f0+ near std::vector<char unsigned near,std::allocator<char unsigned near > near >:::000394f0+ idTuneBase::resolveAd>dvector( char unsigned const near *, char unsigned const near *, std::allocator<char unsigned near > const near & )
+0001:000395c0+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::helper_assign<char unsigned const near * near >( char unsigned const near *, char unsigned const near *, std::tr1::integral_constant<bool near,0> )
+0001:000396b0+ near std::allocator<char unsigned near >::allocator( std::allocator<char unsigned near > const near & )
+0001:000396e0+ near std::auto_ptr<SidTuneBase near >::auto_ptr( SidTuneBase near * )
+0001:00039710+ std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::operator =( std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > const near & )
+0001:000397b0+ void near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::resize( int unsigned, char )
+0001:00039900+ std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near > near & near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::erase( int unsigned, int unsigned )
+0001:00039b90+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::resize( int unsigned, char unsigned )
+0001:00039c40+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::push_back( char unsigned const near & )
+0001:00039cd0+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::insert( char unsigned near *, int unsigned, char unsigned const near & )
+0001:0003a1c0+ char unsigned near * near std::vector<char unsigned near,std::allocator<char unsigned near > near >::erase( char unsigned near *, char unsigned near * )
+0001:0003a250+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::swap( std::vector<char unsigned near,std::allocator<char unsigned near > near > near & )
+0001:0003a320+ void near std::uninitialized_fill_n<char unsigned near * near,int unsigned near,char unsigned near >( char unsigned near *, int unsigned, char unsigned const near & )
+0001:0003a420+ char unsigned near * near std::uninitialized_copy<char unsigned near * near,char unsigned near * near >( char unsigned near *, char unsigned near *, char unsigned near * )
+0001:0003a520+ near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::basic_string( int unsigned, char, std::allocator<char near > const near & )
+0001:0003a7e0+ int unsigned near std::basic_string<char near,std::char_traits<char near > near,std::allocator<char near > near >::find_last_of( char const near *, int unsigned, int unsigned ) const
+0001:0003a8a0+ void near std::vector<char unsigned near,std::allocator<char unsigned near > near >::reserve( int unsigned )
+0001:00038b70+ bool near SidTuneBase::checkCompatibility()
+0001:00038cc0  char const near * near SidTuneBase::PetsciiToAscii::convert( SmartPtr_sidtt<char unsigned const near > near & )
+Module: SidTuneTools.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\sidplayfp\sidtune\SidTuneTools.cpp)
+0001:0003abc0  int unsigned near SidTuneTools::fileNameWithoutPath( char const near * )
+0001:0003ac30  int unsigned near SidTuneTools::slashedFileNameWithoutPath( char const near * )
+0001:0003aca0  char const near * near SidTuneTools::fileExtOfPath( char const near * )
+Module: test.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\test\test.cpp)
+0001:0003b390+ near std::auto_ptr<SidTune near >::auto_ptr( SidTune near * )
+0001:0003b3c0+ near std::auto_ptr<SidTune near >::~auto_ptr()
+0001:0003ad10+ void near loadRom( char const near *, char near * )
+0001:0003ae90  main_
+Module: MD5.obj(C:\Users\halfbot\OneDrive\Документы\кодинг\libsidplayfp-1.6.2\utils\MD5\MD5.cpp)
+0001:00040410+ int unsigned near MD5::F( int unsigned, int unsigned, int unsigned )
+0001:00040450+ int unsigned near MD5::G( int unsigned, int unsigned, int unsigned )
+0001:00040490+ int unsigned near MD5::H( int unsigned, int unsigned, int unsigned )
+0001:000404c0+ int unsigned near MD5::I( int unsigned, int unsigned, int unsigned )
+0001:0003b480  near MD5::MD5()
+0001:0003b4b0+ void near MD5::reset()
+0001:0003b530+ void near MD5::process( char unsigned const near * )
+0001:00040200  void near MD5::append( void const near *, int )
+0001:00040320  void near MD5::finish()
+0001:000403e0  char unsigned const near * near MD5::getDigest()
+Module: C:\WATCOM/lib386\plbx3r.lib(undefed.cpp)
+0001:000405b0  __wcpp_4_undefed_cdtor__
+Module: C:\WATCOM/lib386\plbx3r.lib(cppdata.cpp)
+0002:0000dea8  __wint_thread_data
+0002:0000decc  __compiled_under_generic
+Module: C:\WATCOM/lib386\plbx3r.lib(fsregist.cpp)
+0001:000405d0+ __wcpp_4_dispatch_dummy__
+0001:000405f4  __wcpp_4_fs_lookup__
+0001:00040698  __wcpp_4_fs_handler_rtn__
+0001:0004076c  __wcpp_4_unwind_global__
+0001:000407b0  __wcpp_4_raise_exception__
+Module: C:\WATCOM/lib386\plbx3r.lib(dtorarst.cpp)
+0001:000407e0  __wcpp_4_dtor_array_store__
+Module: C:\WATCOM/lib386\plbx3r.lib(opdelarr.cpp)
+0001:00040810  void near operator delete []( void near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(opdel.cpp)
+0001:00040820  void near operator delete( void near * )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(i8s)
+0001:0004082c* __U8RS
+0001:00040846  __I8RS
+0001:00040861  __I8LS
+0001:00040861* __U8LS
+Module: C:\WATCOM/lib386\plbx3r.lib(stablcl.cpp)
+0001:00040880  __wcpp_4_lcl_register__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(memset.c)
+0001:00040890  memset_
+Module: C:\WATCOM/lib386\math387r.lib(fchop87)
+0001:000408a8  __CHP
+Module: C:\WATCOM/lib386/dos\clib3r.lib(i8m)
+0001:000408c0  __I8M
+0001:000408c0* __U8M
+Module: C:\WATCOM/lib386\plbx3r.lib(opnew.cpp)
+0001:000408e0  void near * near operator new( int unsigned )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(setjmp)
+0001:00040930  _setjmp_
+0001:0004095f  longjmp_
+Module: C:\WATCOM/lib386\plbx3r.lib(opnewp.cpp)
+0001:000409d0  void near * near operator new( int unsigned, void near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(stabthrw.cpp)
+0001:000411a0+ near std::exception::exception( char const near * )
+0001:000411e0+ near std::bad_exception::bad_exception()
+0001:00041230+ near std::bad_exception::bad_exception( std::bad_exception const near & )
+0001:00041280+ near std::bad_exception::~bad_exception()
+0001:0004106c  __wcpp_4_rethrow__
+0001:000410b0  __wcpp_4_catch_done__
+0001:00041110  __wcpp_4_throw__
+0001:00041154* __wcpp_4_throw_zero__
+Module: C:\WATCOM/lib386\plbx3r.lib(stabdtor.cpp)
+0001:000415f0  __wcpp_4_destruct_internal__
+0001:0004160c  __wcpp_4_destruct_all__
+0001:00041610  __wcpp_4_destruct__
+Module: C:\WATCOM/lib386\plbx3r.lib(pure_err.cpp)
+0001:00041630  __wcpp_4_pure_error__
+Module: C:\WATCOM/lib386\plbx3r.lib(undefmbd.cpp)
+0002:0000ded0  ____wcpp_4_data_undefined_member_data_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fltused.c)
+0002:0000c3a0  _fltused_
+Module: C:\WATCOM/lib386\plbx3r.lib(iofefg.cpp)
+0002:0000ddd6  __ppfltused_
+Module: C:\WATCOM/lib386/dos\emu387.lib(386)
+0001:00041694  __init_387_emulator
+0001:00041699* __fini_387_emulator
+Module: C:\WATCOM/lib386/dos\clib3r.lib(_8087)
+0002:0000c3a4  __8087
+0002:0000c3a5  __real87
+Module: C:\WATCOM/lib386\plbx3r.lib(moddtorr.cpp)
+0002:0000de3c  ___wcpp_4_data_module_dtor_ref_
+Module: C:\WATCOM/lib386\plbx3r.lib(stabact.cpp)
+0001:000416a0  __wcpp_4_ctor_array__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(rand.c)
+0001:00041730  rand_
+0001:00041760* srand_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(time.c)
+0001:00041780  time_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(sprintf.c)
+0001:000417c0  sprintf_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(printf.c)
+0001:000417f0  printf_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(isdigit.c)
+0001:00041820  isdigit_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(toupper.c)
+0001:00041830  toupper_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(_strcmp)
+0001:00041840  strcmp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(tolower.c)
+0001:00041980  tolower_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fopen.c)
+0001:00041990+ __open_flags_
+0001:00041b90+ _fsopen_
+0001:00041be0  fopen_
+0001:00041c60* freopen_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fseek.c)
+0001:00041d10  fseek_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(ftell.c)
+0001:00041e10  ftell_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fread.c)
+0001:00041e60  fread_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fclose.c)
+0001:00042030  __doclose_
+0001:000420b0  __shutdown_stream_
+0001:000420d0  fclose_
+0002:0000ded4+ ___RmTmpFileFn
+Module: C:\WATCOM/lib386\plbx3r.lib(ioicin.cpp)
+0002:0000df18  std::istream near std::cin
+0001:00042148* near cin_initfini::cin_initfini()
+Module: C:\WATCOM/lib386\plbx3r.lib(istgch.cpp)
+0001:00042180  std::istream near & near std::istream::get( char near & )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(memmove.c)
+0001:00042200  memmove_
+Module: C:\WATCOM/lib386\plbx3r.lib(flfoprot.cpp)
+0002:0000b398  int const near std::filebuf::openprot
+Module: C:\WATCOM/lib386\plbx3r.lib(ifsconnm.cpp)
+0001:00042260  near std::ifstream::ifstream( char const near *, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(manendl.cpp)
+0001:00042370  std::ostream near & near std::endl( std::ostream near & )
+Module: C:\WATCOM/lib386\plbx3r.lib(ioicout.cpp)
+0002:0000df98  std::ostream near std::cout
+0001:000423e4+ near cout_initfini::cout_initfini()
+0001:000423ec+ near cout_initfini::~cout_initfini()
+Module: C:\WATCOM/lib386\plbx3r.lib(ostincch.cpp)
+0001:00042410  std::ostream near & near std::ostream::operator <<( char const near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(ostinomn.cpp)
+0001:00042490  std::ostream near & near std::ostream::operator <<( std::ostream near & (near *)())
+Module: C:\WATCOM/lib386/dos\clib3r.lib(exit.c)
+0001:00042493+ __null_int23_exit_
+0001:00042494  exit_
+0001:000424c0* _exit_
+0002:0000c484+ ___int23_exit
+0002:0000c488  ___FPE_handler_exit
+Module: C:\WATCOM/lib386\plbx3r.lib(istread.cpp)
+0001:000424e0  std::istream near & near std::istream::read( char near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(fsbclose.cpp)
+0001:00042580  void near std::fstreambase::close()
+Module: C:\WATCOM/lib386\plbx3r.lib(ifsdestr.cpp)
+0001:000425d0  near std::ifstream::~ifstream()
+Module: C:\WATCOM/lib386\plbx3r.lib(ioicerr.cpp)
+0002:0000e018  std::ostream near std::cerr
+0001:00042724+ near cerr_initfini::cerr_initfini()
+0001:00042738+ near cerr_initfini::~cerr_initfini()
+Module: C:\WATCOM/lib386/dos\clib3r.lib(cstart)
+0001:00000003* ___begtext
+0002:00000000* __nullarea
+0002:0000c4d4  __D16Infoseg
+0002:0000c4d6  __x386_zero_base_selector
+0001:0004274c  _cstart_
+0001:0004299a  __exit_
+0001:0004299c  __do_exit_with_msg__
+0001:000429e4  __GETDS
+0001:000429e4  ___GETDSStart_
+0001:000429ef  ___GETDSEnd_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(argcv.c)
+0002:0000e054  __argc
+0002:0000e058  __argv
+0002:0000e05c  ___argc
+0002:0000e060  ___argv
+Module: C:\WATCOM/lib386\plbx3r.lib(fsroot.cpp)
+0002:0000de00  ___wcpp_4_data_init_fs_root_
+Module: C:\WATCOM/lib386\plbx3r.lib(fatalerr.cpp)
+0001:00042a00  __wcpp_4_fatal_runtime_error__
+Module: C:\WATCOM/lib386\plbx3r.lib(stabdisp.cpp)
+0001:00042c2c  __wcpp_4_dispatchable__
+Module: C:\WATCOM/lib386\plbx3r.lib(stabadt.cpp)
+0001:00042c80+ void near * near dtor_the_array( _RTARCTOR near * )
+0001:00042cc4  near _RTARCTOR::~_RTARCTOR()
+0001:00042cdc  __wcpp_4_dtor_array__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nfree.c)
+0001:00042d50  _nfree_
+0001:00042d50  free_
+0002:0000e064  ___MiniHeapFreeRover
+Module: C:\WATCOM/lib386\plbx3r.lib(stabmod.cpp)
+0001:00042e50  __wcpp_4_module_dtor__
+0001:00042e7c  __wcpp_4_mod_register__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(__stos)
+0001:00042e90  __STOSB
+0001:00042ec7* __STOSD
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nmalloc.c)
+0001:00042f40  _nmalloc_
+0001:00042f40  malloc_
+0002:0000c4d8  ___nheapbeg
+0002:0000c4dc  ___MiniHeapRover
+0002:0000c4e0  ___LargestSizeB4MiniHeapRover
+Module: C:\WATCOM/lib386/dos\clib3r.lib(ljmphdl.c)
+0002:0000c4e4  ___longjmp_handler
+Module: C:\WATCOM/lib386\plbx3r.lib(exc_pr.cpp)
+0001:00043050  near _EXC_PR::_EXC_PR( _RTCTL near *, RW_DTREG near *, EXCSTATE )
+0001:00043078  near _EXC_PR::~_EXC_PR()
+0001:00043088  near _EXC_PR_FREE::_EXC_PR_FREE( _RTCTL near *, RW_DTREG near *, EXCSTATE, ACTIVE_EXC near * )
+0001:0004309c  near _EXC_PR_FREE::~_EXC_PR_FREE()
+0001:000430d4  near _EXC_PR_DTOR::_EXC_PR_DTOR( _RTCTL near *, RW_DTREG near *, EXCSTATE, ACTIVE_EXC near * )
+0001:000430e4  near _EXC_PR_FNEXC::_EXC_PR_FNEXC( _RTCTL near *, RW_DTREG near *, RW_DTREG near *, ACTIVE_EXC near * )
+0001:00043104  near _EXC_PR_FNEXC::~_EXC_PR_FNEXC()
+0001:0004310c  near _EXC_PR_DTOR::~_EXC_PR_DTOR()
+Module: C:\WATCOM/lib386\plbx3r.lib(vfun_err.cpp)
+0001:00043130  __wcpp_4_undef_vfun__
+Module: C:\WATCOM/lib386\plbx3r.lib(unexpect.cpp)
+0001:00043160  void near std::unexpected()
+Module: C:\WATCOM/lib386\plbx3r.lib(callterm.cpp)
+0001:00043200  __wcpp_4_corrupted_stack__
+0001:00043214  __wcpp_4_call_terminate__
+Module: C:\WATCOM/lib386\plbx3r.lib(tsequiv.cpp)
+0001:00043240  __wcpp_4_ts_refed__
+0001:00043258+ __wcpp_4_ts_pnted__
+0001:0004328c  __wcpp_4_ts_equiv__
+Module: C:\WATCOM/lib386\plbx3r.lib(stabinit.cpp)
+0001:00043380  __wcpp_4_exc_setup__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(stack386.c)
+0001:00043420  stackavail_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(stk)
+0001:00043447* __STK
+0001:00043434  __CHK
+0001:00043444  __GRO
+0001:00043465  __STKOVERFLOW_
+Module: C:\WATCOM/lib386\plbx3r.lib(allocexc.cpp)
+0001:000434a4  __wcpp_4_alloc_exc__
+0001:000436f4  __wcpp_4_free_exc__
+0001:0004372c  __wcpp_4_find_active__
+0001:00043748  __wcpp_4_dtor_free_exc__
+Module: C:\WATCOM/lib386\plbx3r.lib(stabtrav.cpp)
+0001:00043810  __wcpp_4_stab_entry__
+0001:00043828* __wcpp_4_stab_trav_comp__
+0001:0004390c  __wcpp_4_stab_trav_init__
+0001:00043930  __wcpp_4_stab_trav_next__
+0001:00043988  __wcpp_4_stab_trav_move__
+Module: C:\WATCOM/lib386\plbx3r.lib(ljmpinit.cpp)
+0002:0000de0c  ___wcpp_4_data_init_longjmp_
+Module: C:\WATCOM/lib386\plbx3r.lib(prwdata.cpp)
+0002:0000e068  __wint_pure_error_flag
+0002:0000e06a  __wint_undef_vfun_flag
+0002:0000e06c  __wint_module_init
+Module: C:\WATCOM/lib386/dos\clib3r.lib(setefg.c)
+0001:000439b0  __setEFGfmt_
+Module: C:\WATCOM/lib386\plbx3r.lib(iofnoefg.cpp)
+0002:0000c4fc  void (near * near __EFG_cnvs2d)( char near *, double near * )
+0002:0000c500  int (near * near __EFG_cnvd2f)( double near *, float near * )
+0002:0000c504  void (near * near __EFG_LDcvt)( __6ks9tmlong_double near *, cvt_info near *, char near * )
+0002:0000c508  char near * (near * near __EFG_fcvt)( double, int, int near *, int near * )
+0002:0000c50c  void (near * near __EFG__FDLD)( double near *, __6ks9tmlong_double near * )
+Module: C:\WATCOM/lib386\math387r.lib(cnvs2d.c)
+0001:000439e2  __cnvs2d_
+Module: C:\WATCOM/lib386\math387r.lib(cnvd2f.c)
+0001:000439f0  __cnvd2f_
+Module: C:\WATCOM/lib386\math387r.lib(ldcvt.c)
+0001:00043b42  _LDScale10x_
+0001:000440e9  __LDcvt_
+Module: C:\WATCOM/lib386\math387r.lib(_i_fcvt_.asm)
+0001:00044538  _fcvt_
+Module: C:\WATCOM/lib386\math387r.lib(cnvd2ld.c)
+0001:0004453d  __cnvd2ld_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(dosinite.asm)
+0001:00044542  __sys_init_387_emulator
+0001:00044672  __sys_fini_387_emulator
+Module: C:\WATCOM/lib386/dos\clib3r.lib(chk8087.c)
+0001:00044750* _fpreset_
+0001:00044770+ __init_8087_
+0001:000447b0+ __default_sigfpe_handler_
+0001:000447d0  __chk8087_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(crwdata)
+0002:0000c63f  __osmajor
+0002:0000c640  __osminor
+0002:0000c614  __psp
+0002:0000c636  __Extender
+0002:0000c637  __ExtenderSubtype
+0002:0000c638  __X32VM
+0002:0000c618* __x386_stacklow
+0002:0000c60c  __LpCmdLine
+0002:0000c610  __LpPgmName
+0002:0000c604  __dynend
+0002:0000c608  __curbrk
+0002:0000c618  __STACKLOW
+0002:0000c61c  __STACKTOP
+0002:0000c620  __ASTACKSIZ
+0002:0000c624  __ASTACKPTR
+0002:0000c628  __cbyte
+0002:0000c62c* __cbyte2
+0002:0000c630  __child
+0002:0000c639  __Envptr
+0002:0000c63d  __Envseg
+0002:0000c634  __no87
+0002:0000c641  ___FPE_handler
+Module: C:\WATCOM/lib386/dos\clib3r.lib(gtctm.c)
+0001:00044840  __getctime_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mktime.c)
+0001:00044910  mktime_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(vsprintf.c)
+0001:000449c0  vsprintf_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(iob.c)
+0002:0000c648  ___iob
+0002:0000c850  __fmode
+0002:0000e070  ___OpenStreams
+0002:0000e074  ___ClosedStreams
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fprtf.c)
+0001:00044a00  __fprtf_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(istable.c)
+0002:0000b5d8  __IsTable
+Module: C:\WATCOM/lib386/dos\clib3r.lib(comtflag.c)
+0001:00044aa0* __set_commode_
+0002:0000c854  __commode
+Module: C:\WATCOM/lib386/dos\clib3r.lib(seterrno.c)
+0001:00044aab  __set_errno_
+0001:00044ab7* __set_EDOM_
+0001:00044ac3  __set_ERANGE_
+0001:00044acf* __set_EINVAL_
+0001:00044ae0  __set_doserrno_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(open.c)
+0001:00044d30  open_
+0001:00044d50  sopen_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(chktty.c)
+0001:00044d80  __chktty_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(freefp.c)
+0001:00044dc0  __freefp_
+0001:00044e00  __purgefp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(allocfp.c)
+0001:00044e30  __allocfp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(lseek.c)
+0001:00044ef0  lseek_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(flush.c)
+0001:00044f20  __flush_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(tell.c)
+0001:00045010  tell_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fflush.c)
+0001:00045030  fflush_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(qread.c)
+0001:00045040  __qread_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(ioalloc.c)
+0001:00045070  __ioalloc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fgetc.c)
+0001:00045110  __fill_buffer_
+0001:00045210  fgetc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(__lseek.c)
+0001:000452b0  __lseek_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(_clse.c)
+0001:00045300  __close_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(iobaddr.c)
+0001:00045350  __get_std_stream_
+0001:00045350* __get_std_file_
+Module: C:\WATCOM/lib386\plbx3r.lib(sdfconfp.cpp)
+0001:00045370  near stdiobuf::stdiobuf( __iobuf near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(istconsf.cpp)
+0001:00045380  near std::istream::istream( std::streambuf near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(istdestr.cpp)
+0001:00045430  near std::istream::~istream()
+Module: C:\WATCOM/lib386\plbx3r.lib(sdfdestr.cpp)
+0001:00045500  near stdiobuf::~stdiobuf()
+Module: C:\WATCOM/lib386\plbx3r.lib(istdipfx.cpp)
+0001:000455e0  int near std::istream::do_ipfx( int )
+Module: C:\WATCOM/lib386\plbx3r.lib(istdoget.cpp)
+0001:00045670  std::istream near & near std::istream::do_get( char near & )
+Module: C:\WATCOM/lib386\plbx3r.lib(fsbconnm.cpp)
+0001:000456e0  near std::fstreambase::fstreambase( char const near *, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(istconde.cpp)
+0001:000457f0  near std::istream::istream()
+Module: C:\WATCOM/lib386\plbx3r.lib(iosconde.cpp)
+0001:00045840  near std::ios::ios()
+Module: C:\WATCOM/lib386\plbx3r.lib(fsbdestr.cpp)
+0001:00045850  near std::fstreambase::~fstreambase()
+Module: C:\WATCOM/lib386\plbx3r.lib(iosdestr.cpp)
+0001:00045930  near std::ios::~ios()
+Module: C:\WATCOM/lib386\plbx3r.lib(ostput.cpp)
+0001:000459c0  std::ostream near & near std::ostream::put( char )
+Module: C:\WATCOM/lib386\plbx3r.lib(ostflush.cpp)
+0001:00045a60  std::ostream near & near std::ostream::flush()
+Module: C:\WATCOM/lib386\plbx3r.lib(ostconsf.cpp)
+0001:00045aa0  near std::ostream::ostream( std::streambuf near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(ostdestr.cpp)
+0001:00045b40  near std::ostream::~ostream()
+Module: C:\WATCOM/lib386\plbx3r.lib(ostopfx.cpp)
+0001:00045c10  int near std::ostream::do_opfx()
+Module: C:\WATCOM/lib386\plbx3r.lib(iouwrtit.cpp)
+0001:00045c80  int near __WATCOM_ios::writeitem( std::ostream near &, char const near *, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(iossetst.cpp)
+0001:00046000+ near std::ios::failure::failure( std::ios::failure const near & )
+0001:00046010+ near std::ios::failure::~failure()
+0001:00046020+ near __WATCOM_exception::__WATCOM_exception( __WATCOM_exception const near & )
+0001:00046030+ near __WATCOM_exception::~__WATCOM_exception()
+0001:00045fd0  void near std::ios::setstate( int )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(initrtns.c)
+0001:00046050  __InitRtns
+0001:000460a0  __FiniRtns
+Module: C:\WATCOM/lib386\plbx3r.lib(stfdsgtn.cpp)
+0001:00046100  int near std::streambuf::do_sgetn( char near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(istdread.cpp)
+0001:00046180  std::istream near & near std::istream::do_read( char near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfclose.cpp)
+0001:00046230  std::filebuf near * near std::filebuf::close()
+Module: C:\WATCOM/lib386/dos\clib3r.lib(cmain386.c)
+0001:00046270  __CMain
+Module: C:\WATCOM/lib386/dos\clib3r.lib(dosseg)
+0000:00001234  __DOSseg__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(uselfn.c)
+0002:0000c8a4  ___uselfn
+Module: C:\WATCOM/lib386/dos\clib3r.lib(initargv.c)
+0001:000462b0  __Init_Argv_
+0001:00046300+ _getargv_
+0001:000464a0  __Fini_Argv_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(enterdb.c)
+0001:000464b0  __EnterWVIDEO_
+0002:0000c8a8+ ___WD_Present
+Module: C:\WATCOM/lib386/dos\clib3r.lib(xmsg.c)
+0001:000464e0  __exit_with_msg_
+0001:000464f0  __fatal_runtime_error_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mem.c)
+0001:00046510  __MemAllocator
+0001:000465c0  __MemFree
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nmemneed.c)
+0001:00046700  __nmemneed_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(grownear.c)
+0001:00046790+ __FreeDPMIBlocks_
+0001:00046800  __ReAllocDPMIBlock_
+0001:00046990+ __LastFree_
+0001:00046c00  __ExpandDGROUP_
+Module: C:\WATCOM/lib386\plbx3r.lib(termnate.cpp)
+0001:00046d50  void near std::terminate()
+Module: C:\WATCOM/lib386\plbx3r.lib(areaexc.cpp)
+0002:0000c8ac  ___EXC_AREA
+Module: C:\WATCOM/lib386\plbx3r.lib(tssize.cpp)
+0001:00046da4  __wcpp_4_ts_size__
+Module: C:\WATCOM/lib386\plbx3r.lib(bittest.cpp)
+0001:00046de0  __wcpp_4_bit_test__
+0001:00046e00  __wcpp_4_bit_off__
+Module: C:\WATCOM/lib386\plbx3r.lib(ljmpdtor.cpp)
+0001:00046e88  __wcpp_4_lj_handler__
+Module: C:\WATCOM/lib386/dos\clib3r.lib(noefgfmt.c)
+0002:0000d8c0  ___EFG_printf
+0002:0000d8c4  ___EFG_scanf
+Module: C:\WATCOM/lib386\math387r.lib(efgfmt.c)
+0001:00046ea2  _EFG_Format_
+Module: C:\WATCOM/lib386\math387r.lib(strtod.c)
+0001:00047520+ __Strtold_
+0001:00047687  strtod_
+Module: C:\WATCOM/lib386\math387r.lib(ldclass.c)
+0001:000477cb  __LDClass_
+0001:0004781b* _FLClass_
+Module: C:\WATCOM/lib386\math387r.lib(efcvt.c)
+0001:0004785b* ecvt_
+0001:00047892  fcvt_
+Module: C:\WATCOM/lib386/dos\emu387.lib(emu387)
+0001:00047c88  __int7_pl3
+0001:00047cac* __int7_X32VM
+0001:00047cf8  __int7
+Module: C:\WATCOM/lib386/dos\clib3r.lib(hook387.c)
+0001:0004ae40  __hook387
+0001:0004aef0  __unhook387
+Module: C:\WATCOM/lib386/dos\clib3r.lib(8087cw.c)
+0002:0000d94c  __8087cw
+Module: C:\WATCOM/lib386/dos\clib3r.lib(save8087.c)
+0002:0000d950  ___Save8087
+0002:0000d954  ___Rest8087
+Module: C:\WATCOM/lib386/dos\clib3r.lib(init8087)
+0001:0004af34  __x87id
+Module: C:\WATCOM/lib386/dos\clib3r.lib(grabfp87.c)
+0001:0004af70  __GrabFP87_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(locmktim.c)
+0001:0004afe0  __local_mktime_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(gmtime.c)
+0001:0004b160  __brktime_
+0001:0004b260+ _gmtime_
+0001:0004b280* gmtime_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(tzset.c)
+0002:0000d958  ___start_dst
+0002:0000d97c  ___end_dst
+0002:0000daa4* _tzname
+0002:0000daac  _timezone
+0002:0000dab0  _daylight
+0002:0000dab4  ___dst_adjust
+0001:0004b290* __DontCacheOSTZ_
+0001:0004b2a0* __CacheOSTZ_
+0001:0004b7b0+ __parse_tz_
+0001:0004b9e0  tzset_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(timeutil.c)
+0001:0004bb50  __isindst_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(prtf.c)
+0001:0004be80  __prtf_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(initfile.c)
+0001:0004ccf0  __InitFiles_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(ioexit.c)
+0001:0004cdf0* fcloseall_
+0001:0004ce00  __full_io_exit_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fputc.c)
+0001:0004ce10  fputc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(errno.c)
+0001:0004ced0  __get_errno_ptr_
+0001:0004cee0  __get_doserrno_ptr_
+0002:0000e120+ _errno
+0002:0000e124+ __doserrno
+Module: C:\WATCOM/lib386/dos\clib3r.lib(opendos.c)
+0001:0004cef0  _dos_open_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(iomode.c)
+0001:0004cf10  __GetIOMode_
+0001:0004cf30  __SetIOMode_nogrow_
+0002:0000db04  ___NFiles
+0002:0000db08  ___init_mode
+0002:0000db58  ___io_mode
+Module: C:\WATCOM/lib386/dos\clib3r.lib(isatt.c)
+0001:0004cf50  isatty_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(dosret.c)
+0001:0004cf70  _dosretax_
+0001:0004cf80* _dosret0_
+0001:0004cf90  __set_errno_dos_
+0001:0004d010* __set_errno_dos_reterr_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(umaskval.c)
+0002:0000db70  ___umaskval
+Module: C:\WATCOM/lib386/dos\clib3r.lib(creatdos.c)
+0001:0004d020  _dos_creat_
+0001:0004d040* _dos_creatnew_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(stiomode.c)
+0001:0004d060+ __grow_iomode_
+0001:0004d120+ __shrink_iomode_
+0001:0004d150  __SetIOMode_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(qwrit.c)
+0001:0004d1c0  __qwrite_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fsync.c)
+0001:0004d240  fsync_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(flushall.c)
+0001:0004d250  __flushall_
+0001:0004d290  flushall_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(gtche.c)
+0001:0004d2a0  getche_
+Module: C:\WATCOM/lib386\plbx3r.lib(stfdspun.cpp)
+0001:0004d2c0  int near std::streambuf::do_sputn( char const near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(stfpbfai.cpp)
+0001:0004d360  int near std::streambuf::pbackfail( int )
+Module: C:\WATCOM/lib386\plbx3r.lib(sdfoverf.cpp)
+0001:0004d370  int near stdiobuf::overflow( int )
+Module: C:\WATCOM/lib386\plbx3r.lib(sdfundrf.cpp)
+0001:0004d4d0  int near stdiobuf::underflow()
+Module: C:\WATCOM/lib386\plbx3r.lib(stfsbuf.cpp)
+0001:0004d5f0  std::streambuf near * near std::streambuf::setbuf( char near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(stfseeko.cpp)
+0001:0004d640  long near std::streambuf::seekoff( long, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(stfseekp.cpp)
+0001:0004d650  long near std::streambuf::seekpos( long, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(sdfsync.cpp)
+0001:0004d660  int near stdiobuf::sync()
+Module: C:\WATCOM/lib386\plbx3r.lib(stfdoall.cpp)
+0001:0004d690  int near std::streambuf::doallocate()
+Module: C:\WATCOM/lib386\plbx3r.lib(stfconde.cpp)
+0001:0004d6d0  near std::streambuf::streambuf()
+Module: C:\WATCOM/lib386\plbx3r.lib(iosinit.cpp)
+0001:0004d720  void near std::ios::init( std::streambuf near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(stfdestr.cpp)
+0001:0004d770  near std::streambuf::~streambuf()
+Module: C:\WATCOM/lib386\plbx3r.lib(manws.cpp)
+0001:0004d790  std::istream near & near std::ws( std::istream near & )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfconde.cpp)
+0001:0004d7c0  near std::filebuf::filebuf()
+Module: C:\WATCOM/lib386\plbx3r.lib(flfopen.cpp)
+0001:0004d7e0  std::filebuf near * near std::filebuf::open( char const near *, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfdestr.cpp)
+0001:0004d880  near std::filebuf::~filebuf()
+Module: C:\WATCOM/lib386\plbx3r.lib(ioufrxal.cpp)
+0001:0004d950  void near __WATCOM_ios::free_xalloc_storage( std::ios near * )
+Module: C:\WATCOM/lib386\plbx3r.lib(stfsync.cpp)
+0001:0004d970  int near std::streambuf::sync()
+Module: C:\WATCOM/lib386\plbx3r.lib(opnewarr.cpp)
+0001:0004d9b0  void near * near operator new []( int unsigned )
+Module: C:\WATCOM/lib386\plbx3r.lib(iosfail.cpp)
+0001:0004d9c0  near std::ios::failure::failure( int )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(sgdef086)
+0002:0000ddd0  __Start_XI
+0002:0000de36  __End_XI
+0002:0000de36  __Start_YI
+0002:0000de60  __End_YI
+Module: C:\WATCOM/lib386/dos\clib3r.lib(close.c)
+0001:0004d9d0  close_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(cinit.c)
+0001:0004d9e0  __CommonInit_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(___argc.c)
+0002:0000e12c  ____Argc
+0002:0000e130  ____Argv
+Module: C:\WATCOM/lib386/dos\clib3r.lib(histsplt.c)
+0002:0000e134  ___historical_splitparms
+Module: C:\WATCOM/lib386/dos\clib3r.lib(heapen.c)
+0001:0004da40* _heapenable_
+0002:0000db88  ___heap_enabled
+Module: C:\WATCOM/lib386/dos\clib3r.lib(minreal.c)
+0002:0000e138  ___minreal
+Module: C:\WATCOM/lib386/dos\clib3r.lib(amblksiz.c)
+0002:0000db8c  __amblksiz
+Module: C:\WATCOM/lib386/dos\clib3r.lib(sbrk386.c)
+0001:0004da50* sbrk_
+0001:0004db30  __brk_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(rtcntrl.c)
+0001:0004dc50* _SetLD64bit_
+0001:0004dc60* _SetLD80bit_
+0001:0004dc70  _LDisDouble_
+Module: C:\WATCOM/lib386\math387r.lib(bufld386)
+0001:0004dc80  __ZBuf2LD
+Module: C:\WATCOM/lib386\math387r.lib(inf_nan.c)
+0001:0004dd23* ___f_infinity
+0001:0004dd27* ___f_posqnan
+0001:0004dd2b  ___d_infinity
+0001:0004dd33  ___d_posqnan
+0001:0004dd3b* ___ld_infinity
+0001:0004dd43* ___ld_posqnan
+Module: C:\WATCOM/lib386/dos\clib3r.lib(hugeval.c)
+0002:0000bb10  __HugeValue
+Module: C:\WATCOM/lib386/dos\clib3r.lib(cvtbuf.c)
+0001:0004dd50  __CVTBuffer_
+Module: C:\WATCOM/lib386\math387r.lib(cvt.c)
+0001:0004dd56  __cvt_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpexcept.c)
+0001:0004dde0  __FPE_exception_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpe387)
+0002:0000db94  ___PMSeg
+0002:0000db96  ___PMAddr
+0002:0000db9a  ___RMAddr
+0001:0004dde8  __Init_FPE_handler_
+0001:0004de20  __Fini_FPE_handler_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(dpmihost.c)
+0001:0004de60  __DPMI_hosted_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpeinth)
+0001:0004def8  __FPEHandler_
+0001:0004def8  ___FPEHandlerStart_
+0001:0004df05  __FPE2Handler_
+0001:0004e007  ___FPEHandlerEnd_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(leapyear.c)
+0001:0004e140  __leapyear_
+0002:0000118c  ___diyr
+0002:000011a6  ___dilyr
+Module: C:\WATCOM/lib386/dos\clib3r.lib(getenv.c)
+0001:0004e180  getenv_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(wctomb.c)
+0001:0004e210  wctomb_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(itoa.c)
+0001:0004e240+ utoa_
+0001:0004e290  itoa_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(strupr.c)
+0001:0004e2c0  strupr_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(lltoa.c)
+0001:0004e2e0  ulltoa_
+0001:0004e350* lltoa_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(ltoa.c)
+0001:0004e380  ultoa_
+0001:0004e3d0* ltoa_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbisdbcs.c)
+0002:0000e164  ___IsDBCS
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbislead.c)
+0001:0004e400* _ismbblead_
+0002:0000e168  ___MBCSIsTable
+Module: C:\WATCOM/lib386/dos\clib3r.lib(doserror)
+0001:0004e418  __doserror_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nrealloc.c)
+0001:0004e430* _nrealloc_
+0001:0004e430  realloc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(iomodtty.c)
+0001:0004e4d0  __ChkTTYIOMode_
+0001:0004e510* __IOMode_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(filedos.c)
+0001:0004e530* _dos_close_
+0001:0004e540  _dos_commit_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fwrite.c)
+0001:0004e550  fwrite_
+Module: C:\WATCOM/lib386\plbx3r.lib(stfsetb.cpp)
+0001:0004e730  void near std::streambuf::setb( char near *, char near *, int )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(liballoc.c)
+0001:0004e790  _plib_malloc_
+0001:0004e7a0  _plib_free_
+Module: C:\WATCOM/lib386\plbx3r.lib(istpeek.cpp)
+0001:0004e7b0  int near std::istream::peek()
+Module: C:\WATCOM/lib386/dos\clib3r.lib(isspace.c)
+0001:0004e810  isspace_
+Module: C:\WATCOM/lib386\plbx3r.lib(istget.cpp)
+0001:0004e820  int near std::istream::get()
+Module: C:\WATCOM/lib386\plbx3r.lib(flfpbfai.cpp)
+0001:0004e8a0  int near std::filebuf::pbackfail( int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfoverf.cpp)
+0001:0004e960  int near std::filebuf::overflow( int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfundrf.cpp)
+0001:0004eb80  int near std::filebuf::underflow()
+Module: C:\WATCOM/lib386\plbx3r.lib(flfsetbf.cpp)
+0001:0004ec90  std::streambuf near * near std::filebuf::setbuf( char near *, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfseeko.cpp)
+0001:0004ecf0  long near std::filebuf::seekoff( long, int, int )
+Module: C:\WATCOM/lib386\plbx3r.lib(flfsync.cpp)
+0001:0004ed40  int near std::filebuf::sync()
+Module: C:\WATCOM/lib386/dos\clib3r.lib(plusopen.c)
+0001:0004ede0  __plusplus_open_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpephar)
+0001:0004eeb0  __Phar_hook_init_
+0001:0004ef76  __Phar_hook_fini_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpedos4g)
+0001:0004efa4  __DOS4G_hook_init_
+0001:0004efd2  __DOS4G_hook_fini_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(environ.c)
+0002:0000e26c  ___env_mask
+0002:0000e270  _environ
+0002:0000e274* __wenviron
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbterm.c)
+0001:0004eff0  _mbterm_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbsnextc.c)
+0001:0004f030  _mbsnextc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbcupper.c)
+0001:0004f070  _mbctoupper_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbsinc.c)
+0001:0004f090  _mbsinc_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(alphabet.c)
+0002:000011c0  ___Alphabet
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbinit.c)
+0001:0004f0fa  __mbinit_
+0001:0004f1cb+ dos_get_dbcs_lead_table_
+0001:0004f2bf+ dos_get_code_page_
+0002:0000ddc0  ___MBCodePage
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nmsize.c)
+0001:0004f460  _nmsize_
+0001:0004f460* _msize_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nexpand.c)
+0001:0004f470  _nexpand_
+0001:0004f470* _expand_
+0001:0004f4e0+ __HeapManager_expand_
+Module: C:\WATCOM/lib386\plbx3r.lib(istipfx.cpp)
+0001:0004f6b0  int near std::istream::ipfx( int )
+Module: C:\WATCOM/lib386/dos\clib3r.lib(write.c)
+0001:0004f800  write_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(read.c)
+0001:0004fa40  read_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(stat.c)
+0001:0004fbd5  stat_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fpeint.c)
+0002:0000ddc4  ___FPE_int
+0002:0000ddc5  ___IRQ_num
+0002:0000ddc6+ ___IRQ_int
+0002:0000ddc7  ___MST_pic
+0002:0000ddc8+ ___SLV_pic
+Module: C:\WATCOM/lib386/dos\clib3r.lib(setenvp.c)
+0001:0004fe90  __setenvp_
+0001:0004ff70  __freeenvp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbdtoupp.c)
+0001:0004ffc0  _mbdtoupper_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(intdx386.c)
+0001:0004ffe0  intdosx_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(inirmsel.c)
+0002:0000e27c  __ExtenderRealModeSelector
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbschr.c)
+0001:00050160  _mbschr_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbscmp.c)
+0001:000501c0  _mbscmp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbspbrk.c)
+0001:00050230  _mbspbrk_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fullpath.c)
+0001:00050280+ _sys_fullpath_
+0001:000505a0  _fullpath_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(gtcwd.c)
+0001:00050620  getcwd_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(chdir.c)
+0001:000506c0  chdir_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(finddos.c)
+0001:000506e0  _dos_findfirst_
+0001:00050730* _dos_findnext_
+0001:00050790  _dos_findclose_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(fstat.c)
+0001:000507a0  fstat_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(d2ttime.c)
+0001:000508c0  _d2ttime_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(nonibm.c)
+0001:00050940+ __is_nonIBM_
+0002:0000ddcc  ___NonIBM
+Module: C:\WATCOM/lib386/dos\clib3r.lib(clearenv.c)
+0001:000509a0  clearenv_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbconv.c)
+0001:00050a30  _mbvtop_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbclen.c)
+0001:00050a50  _mbclen_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(mbccmp.c)
+0001:00050a80  _mbccmp_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(strncpy.c)
+0001:00050ac0  strncpy_
+Module: C:\WATCOM/lib386/dos\clib3r.lib(filelen.c)
+0001:00050b00  filelength_
+
+
+                        +----------------------+
+                        |   Imported Symbols   |
+                        +----------------------+
+
+Symbol                              Module
+======                              ======
+
+
+
+                        +--------------------+
+                        |   Libraries Used   |
+                        +--------------------+
+
+C:\WATCOM/lib386\math387r.lib
+C:\WATCOM/lib386/dos\emu387.lib
+C:\WATCOM/lib386/dos\clib3r.lib
+C:\WATCOM/lib386\plbx3r.lib
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  00010000 (65536.)
+Memory size:  0006ee33 (454195.)
+Entry point address: 0001:0004274c
+Link time: 00:00.84
