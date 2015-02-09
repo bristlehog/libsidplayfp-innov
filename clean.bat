@@ -1,0 +1,1 @@
+del *.err *.lb1 *.lk1 *.mk1 *.mk *.obj *.sym *.map

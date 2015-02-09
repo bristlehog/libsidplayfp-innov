@@ -1,4 +1,9 @@
 /*.err
+/*.lb1
+/*.lk1
+/*.lib
+/*.mk1
+/*.mk
 /*.obj
 /*.sym
 /*.obj
