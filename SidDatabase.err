@@ -1,2 +1,0 @@
-C:\WATCOM\h\memory(138): Warning! W014: col(44) no reference to symbol 'ERR_MEM_ALLOC'
-utils\SidDatabase.cpp(35): Note! N392: col(12) definition: 'char const ERR_MEM_ALLOC[47]'

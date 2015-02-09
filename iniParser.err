@@ -1,4 +1,0 @@
-utils\iniParser.cpp(65): Error! E029: col(9) symbol 'getline' has not been declared
-utils\iniParser.cpp(117): Error! E419: col(37) cannot call non-const function for a constant object
-utils\iniParser.cpp(117): Note! N638: col(37) 'map' defined in: C:\WATCOM\h\map(57) (col 7)
-utils\iniParser.cpp(117): Note! N392: col(37) definition: 'std::_ow::RedBlackTree<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>> const,std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::_ow::TreePairWrapper<std::basic_string<char,std::char_traits<char>,std::allocator<char>>,std::basic_string<c
