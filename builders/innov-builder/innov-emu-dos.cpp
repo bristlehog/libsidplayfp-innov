@@ -20,6 +20,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#define _CRT_NONSTDC_NO_DEPRECATE
+
 #include "innov-emu.h"
 
 #include <stdint.h>
@@ -50,11 +52,10 @@
 
 */
 
-bool Innov::m_sidFree[16] = {0};
 const unsigned int Innov::voices = INNOV_VOICES;
-unsigned int Innov::sid = 0;
+unsigned Innov::sid = 0;
 
-unsigned int read_8254_count (void)
+unsigned read_8254_count (void)
 {
     unsigned short result;
     
@@ -64,10 +65,10 @@ unsigned int read_8254_count (void)
         cli               // no ints while we read the 8254
         mov  al,0         // command to latch counter for counter 0
         out  0x43,al      // tell the 8254 to latch the count
-        db   0x24, 0xf0   // jmp $+2, this slow I/O on fast processors
+        //db   0x24h, 0xf0  // jmp $+2, this slow I/O on fast processors
         in   al,0x40      // read LSB of 8254's count
         mov  ah,al        // temp save
-        db   0x24, 0xf0   // jmp $+2
+        //db   0x24, 0xf0   // jmp $+2
         in   al,0x40      // read MSB of count
         xchg al,ah        // get right order of MSB/LSB
         popf              // return saved interrupt status
@@ -155,29 +156,10 @@ const char* Innov::getCredits()
 
 Innov::Innov (sidbuilder *builder) :
     sidemu(builder),
-    Event("Innov Delay"),
-    m_handle(0),
-    m_instance(sid++)
+    Event("Innov Delay")
 {
-    unsigned int num = 16;
+    ++sid;
 
-    //printf("_DEBUG: Innov::Innov call!\n");
-    
-    for ( unsigned int i = 0; i < 16; i++ )
-    {
-        if(m_sidFree[i] == 0)
-        {
-            m_sidFree[i] = 1;
-            num = i;
-            break;
-        }
-    }
-
-    // All sids in use?!?
-    if (num == 16)
-        return;
-
-    m_instance = num;
 /*
     {
         char device[20];
@@ -210,10 +192,7 @@ Innov::~Innov()
 {
     //printf("_DEBUG: Innov::~Innov call!\n");
     
-    sid--;
-    m_sidFree[m_instance] = 0;
-    if (m_handle)
-        close (m_handle);
+    --sid;
 }
 
 void Innov::reset(uint8_t volume)

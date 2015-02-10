@@ -27,20 +27,18 @@
 #include "sidplayfp/sidbuilder.h"
 #include "sidplayfp/siddefs.h"
 
+typedef long s32;
+typedef unsigned long u32;
+typedef unsigned long long u64;
+typedef unsigned short u16;
+typedef unsigned char u8;
+
 /**
  * Innovation SSI-2001 Builder Class
  */
+
 class SID_EXTERN InnovBuilder : public sidbuilder
 {
-private:
-    static bool m_initialised;
-
-#ifndef _WIN32
-    static unsigned int m_count;
-#endif
-
-    int init ();
-
 public:
     InnovBuilder(const char * const name);
     ~InnovBuilder();
@@ -67,6 +65,12 @@ public:
      * @param sids the number of required sid emu
      */
     unsigned int create(unsigned int sids);
+
+private:
+    int init();
+
+    static bool m_initialised;
+    static u32 m_timer_tick;
 };
 
 #endif // INNOV_H

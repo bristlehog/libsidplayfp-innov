@@ -105,18 +105,11 @@ class Innov : public sidemu, private Event
 private:
     friend class InnovBuilder;
 
-    // HardSID specific data
-#ifndef _WIN32
-    static         bool m_sidFree[16];
-    int            m_handle;
-#endif
-
     static const unsigned int voices;
     static       unsigned int sid;
 
     // Must stay in this order
     bool           muted[INNOV_VOICES];
-    unsigned int   m_instance;
 
 public:
     static const char* getCredits();

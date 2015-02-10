@@ -31,7 +31,8 @@
 #include "psiddrv.h"
 #include "romCheck.h"
 
-#if defined(_CMAKE_WATCOM_VERSION)
+#if defined(__WATCOM__) || defined(WIN32)
+#define _CRT_NONSTDC_NO_DEPRECATE
 #include <conio.h>
 #endif
 

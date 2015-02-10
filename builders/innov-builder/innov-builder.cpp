@@ -40,7 +40,7 @@
 bool InnovBuilder::m_initialised = false;
 
 
-unsigned int InnovBuilder::m_count = 1; // To be fixed?
+u32 InnovBuilder::m_timer_tick;
 
 InnovBuilder::InnovBuilder (const char * const name) :
     sidbuilder (name)
@@ -107,9 +107,7 @@ InnovBuilder_create_error:
 unsigned int InnovBuilder::availDevices() const
 {
     // Available devices
-    // @FIXME@ set equal to 1
-
-    return m_count;
+    return 1;
 }
 
 const char *InnovBuilder::credits() const
@@ -231,9 +229,6 @@ int InnovBuilder::init()
     return 0;
 
 Innov_init_error:
-    /*
-    if (dll)
-        FreeLibrary (dll);
-    */
+
     return -1;
 }

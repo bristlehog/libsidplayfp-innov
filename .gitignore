@@ -9,4 +9,5 @@
 /*.obj
 /*.exe
 /*.map
+*.suo
 /bin/*

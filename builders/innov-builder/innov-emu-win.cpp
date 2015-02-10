@@ -20,23 +20,18 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "hardsid-emu.h"
+#include "innov-emu.h"
 
 #include <cstdio>
 #include <sstream>
 #include <string>
 
-#include "hardsid.h"
+#include "innov.h"
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
 
-/***************************************************************************
-Hardsid support interface.
-Created from Jarnos original
-Sidplay2 patch
-***************************************************************************/
 
 extern HsidDLL2 hsid2;
 const  unsigned int HardSID::voices = HARDSID_VOICES;
