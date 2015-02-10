@@ -29,6 +29,7 @@
 #include "../../sidplayfp/sidemu.h"
 #include "../../sidplayfp/EventScheduler.h"
 #include "../../sidplayfp/siddefs.h"
+#include "innov.h"
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -113,8 +114,7 @@ private:
 
 public:
     static const char* getCredits();
-
-public:
+    
     Innov(sidbuilder *builder);
     ~Innov();
 
@@ -144,6 +144,7 @@ private:
     // shoot to 100% CPU usage when song nolonger
     // writes to SID.
     void event();
+    void synchronize();
 };
 
 #endif // INNOV_EMU_H

@@ -31,10 +31,33 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
+#include <dos.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
+
+#define NTSC_MASTER_CLOCK 14318180UL
+#define PC_TIMER_DIVIDER 16
+#define PC_TIMER_FREQ (NTSC_MASTER_CLOCK/12)
+
+#define PC_TIMER_INTERRUPT_VECTOR (0x1C)
+
+volatile static u32 timer_tick;
+static const u32 timer_freq = PC_TIMER_FREQ;
+static u32 timer_tick_base;
+static u32 timer_freq_scale;
+static u32 vcpu_freq;
+static u32 vcpu_tick_base;
+    // TODO: Support several instances later?
+
+
+static unsigned timer_refcount;
+
+const unsigned int Innov::voices = INNOV_VOICES;
+unsigned Innov::sid = 0;
+
+
 
 /*
 
@@ -52,9 +75,72 @@
 
 */
 
-const unsigned int Innov::voices = INNOV_VOICES;
-unsigned Innov::sid = 0;
 
+void (__interrupt * old_timer_isr)(void);
+
+static void __interrupt timer_isr(void)
+{
+    timer_tick += PC_TIMER_DIVIDER;
+    if(0 == (timer_tick & 0xFFFF))
+        old_timer_isr();             /* Chain back to original interrupt */
+    else {
+        __asm {
+            mov al, 0x20
+            out 0x20, al
+        }
+    }
+}
+
+/*  Ordinarily using INT 01Ch is the preferred method, but INT 08h can
+ *  also be used.
+ */
+
+
+static void timer_grab(void)
+{
+    if(0 == timer_refcount++) {
+        old_timer_isr = _dos_getvect(PC_TIMER_INTERRUPT_VECTOR);
+        _dos_setvect(PC_TIMER_INTERRUPT_VECTOR, timer_isr);
+        __asm {
+            cli                               ;Disabled interrupts (just in case)
+            
+            mov al,00110100b                  ;channel 0, lobyte/hibyte, rate generator
+            out 0x43, al
+            
+            mov ax, PC_TIMER_DIVIDER          ;ax = 16 bit reload value
+            out 0x40, al                      ;Set low byte of PIT reload value
+            mov al, ah                        ;ax = high 8 bits of reload value
+            out 0x40, al
+            
+            sti
+        }
+    }
+}
+
+static void timer_release(void)
+{
+    if (0 == timer_refcount) {
+            // TODO: LOG Error!!!!!
+        return;
+    }
+    if(0 == --timer_refcount) {
+        __asm {
+            cli                               ;Disabled interrupts (just in case)
+            
+            mov al,00110100b                  ;channel 0, lobyte/hibyte, rate generator
+            out 0x43, al
+            
+            xor eax, eax                      
+            out 0x40, al                      ;Set low byte of PIT reload value
+            out 0x40, al
+            
+            sti
+        }
+        _dos_setvect(PC_TIMER_INTERRUPT_VECTOR, old_timer_isr);
+    }
+}
+
+#if 0
 unsigned read_8254_count (void)
 {
     unsigned short result;
@@ -65,10 +151,10 @@ unsigned read_8254_count (void)
         cli               // no ints while we read the 8254
         mov  al,0         // command to latch counter for counter 0
         out  0x43,al      // tell the 8254 to latch the count
-        //db   0x24h, 0xf0  // jmp $+2, this slow I/O on fast processors
+        db   0x24h, 0xf0  // jmp $+2, this slow I/O on fast processors
         in   al,0x40      // read LSB of 8254's count
         mov  ah,al        // temp save
-        //db   0x24, 0xf0   // jmp $+2
+        db   0x24, 0xf0   // jmp $+2
         in   al,0x40      // read MSB of count
         xchg al,ah        // get right order of MSB/LSB
         popf              // return saved interrupt status
@@ -135,6 +221,7 @@ void cycle_delay(unsigned short delay_cycles)
     tm_delay(dcycles);
 }
 
+#endif
 const char* Innov::getCredits()
 {
     if (m_credit.empty())
@@ -160,6 +247,7 @@ Innov::Innov (sidbuilder *builder) :
 {
     ++sid;
 
+    timer_grab();
 /*
     {
         char device[20];
@@ -185,13 +273,13 @@ Innov::Innov (sidbuilder *builder) :
     }
 */
     m_status = true;
-    reset ();
+    reset();
 }
 
 Innov::~Innov()
 {
     //printf("_DEBUG: Innov::~Innov call!\n");
-    
+    timer_release();
     --sid;
 }
 
@@ -218,32 +306,37 @@ void Innov::clock()
 
     unsigned long clk_counter;
     //printf("_DEBUG: Innov::clock call!\n");
-
-    /* we don't need HardSID's handle
-    if (!m_handle)
-        return;
-    */
     
-    event_clock_t cycles = m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
+    synchronize();
+}
 
-   
-    m_accessClk += cycles;
-
-    //printf("_DEBUG: Innov::clock | cycles = %lu\n", cycles);
-
-    while (cycles > 0xffff)
-    {
-        //ioctl(m_handle, HSID_IOCTL_DELAY, 0xffff);
-        // delay here
-
-        cycle_delay(0xffff);
-        cycles -= 0xffff;
+void Innov::synchronize() 
+{
+    event_clock_t cycles = (u32)m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
+    u32 vcpu_tick_target = (u32)(m_accessClk += cycles) - vcpu_tick_base;
+        // Adjust base
+    while (vcpu_tick_target > vcpu_freq) {
+        vcpu_tick_target -= vcpu_freq;
+        vcpu_tick_base += vcpu_freq;
+        timer_tick_base += PC_TIMER_FREQ;
     }
-
-    if (cycles)
-    {
-        cycle_delay(cycles);
-        /*ioctl(m_handle, HSID_IOCTL_DELAY, cycles);*/
+    
+    // We always assume here that vcpu_freq <= PC_TIMER_FREQ
+    // timer_ticks_target = timer_ticks_base + vcpu_ticks_target + (u32)(vcpu_ticks_target * V_SCALE >> 32);
+    // while ((s32)(timer_ticks - timer_ticks_target) < 0) halt();
+    __asm {
+        mov eax, [vcpu_tick_target]
+        mov ecx, eax
+        mul [timer_freq_scale]
+        add ecx, timer_tick_base
+        add edx, ecx
+    again:
+        mov eax, [timer_tick]
+        sub eax, edx
+        jns done
+        hlt
+        jmp again
+    done:
     }
 }
 
@@ -259,60 +352,31 @@ uint8_t Innov::read(uint_least8_t addr)
     }
     */
 
-    event_clock_t cycles = m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
+    u32 cycles = (u32)m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
     m_accessClk += cycles;
 
     //printf("_DEBUG: Innov::read | cycles = %lu\n", cycles);    
 
-    while ( cycles > 0xffff )
-    {
-        // delay 
-        //ioctl(m_handle, HSID_IOCTL_DELAY, 0xffff);
-        cycle_delay(0xffff);
-        cycles -= 0xffff;
-    }
-
-    //unsigned int packet = (( cycles & 0xffff ) << 16 ) | (( addr & 0x1f ) << 8 );
+    synchronize();
+    
     //ioctl(m_handle, HSID_IOCTL_READ, &packet);
 
     unsigned int packet = inp(INNOV_PORT + addr);
 
-    return (uint8_t) (packet & 0xff);
+    return (uint8_t)packet;
 }
 
 void Innov::write(uint_least8_t addr, uint8_t data)
 {
     //printf("_DEBUG: Innov::write call!\n");
 
-    /* we don't need HardSID's handle       
-    if (!m_handle)
-    {
-        printf("_DEBUG: Innov::write | m_handle is false, exiting.\n");  
-        return;
-    }
-    */
-
-    event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
+    event_clock_t cycles = m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
     m_accessClk += cycles;
 
     //printf("_DEBUG: Innov::write | cycles = %lu\n", cycles);
 
-    while ( cycles > 0xffff )
-    {
-        // delay 
-        //ioctl(m_handle, HSID_IOCTL_DELAY, 0xffff);
-        cycle_delay(0xffff);
-        cycles -= 0xffff;
-    }
-
-    //unsigned int packet = (( cycles & 0xffff ) << 16 ) | (( addr & 0x1f ) << 8 ) | (data & 0xff);
-
-    //printf("_DEBUG: Innov::write | before ::write()\n");
-
-    /* this is Unix stuff for writing to HardSID device
-    ::write (m_handle, &packet, sizeof (packet));
-    */
-
+    synchronize();
+    
     outp(INNOV_PORT + addr, data);
 }
 
@@ -341,13 +405,7 @@ void Innov::event()
  
     //printf("_DEBUG: Innov::event call!\n");
 
-    /*event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
-    m_accessClk += cycles;*/
-
-
-
-     
-    event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
+    event_clock_t cycles = m_context->getTime(m_accessClk, EVENT_CLOCK_PHI1);
     if (cycles < 60000)
     {
         m_context->schedule(*this, 60000 - cycles,
@@ -355,13 +413,9 @@ void Innov::event()
     }
     else
     {
-        m_accessClk += cycles;
-        //ioctl(m_handle, HSID_IOCTL_DELAY, (uint) cycles);
-        cycle_delay(cycles);
-        m_context->schedule (*this, 60000, EVENT_CLOCK_PHI1);
+        synchronize();
+        m_context->schedule(*this, 60000, EVENT_CLOCK_PHI1);
     }
-
-    //m_context->schedule(*this, 100, EVENT_CLOCK_PHI1);
 }
 
 void Innov::filter(bool enable)
@@ -385,6 +439,22 @@ bool Innov::lock(EventContext* env)
     sidemu::lock(env);
     m_context->schedule(*this, HARDSID_DELAY_CYCLES, EVENT_CLOCK_PHI1);
 
+    // TODO: set 
+    vcpu_freq = 1000000; // TODO: read actual frequency <= PC_TIMER_FREQ
+    vcpu_tick_base = (u32)m_accessClk;
+    timer_tick_base = timer_tick + 2;
+    //timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
+    __asm {
+        mov edx, [timer_freq]
+        xor eax, eax
+        mov ecx, [vcpu_freq]
+        sub edx, ecx
+        div ecx
+        mov [timer_freq_scale], eax
+    }
+    //timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
+
+    printf("_DEBUG: event_frequency: %lu, scale=2**32 + %lu\n", vcpu_freq, timer_freq_scale);
     return true;
 }
 

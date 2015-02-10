@@ -31,7 +31,7 @@
 #include "psiddrv.h"
 #include "romCheck.h"
 
-#if defined(__WATCOM__) || defined(WIN32)
+#if defined(__WATCOMC__) || defined(_WIN32)
 #define _CRT_NONSTDC_NO_DEPRECATE
 #include <conio.h>
 #endif
@@ -183,8 +183,8 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
     //printf("_DEBUG: before m_mixer.begin()\n");
 
     m_mixer.begin(buffer, count);
-	
-    //printf("_DEBUG: Player::play | count = %lu \n", count);   	
+        
+    //printf("_DEBUG: Player::play | count = %lu \n", count);           
 
     // Start the player loop
     m_isPlaying = true;
@@ -205,7 +205,7 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
                 m_mixer.doMix();
             }
             count = m_mixer.samplesGenerated();
-			//printf("_DEBUG: Player::play | count = %lu \n", count);
+                        //printf("_DEBUG: Player::play | count = %lu \n", count);
         }
         else
         {
@@ -216,26 +216,26 @@ uint_least32_t Player::play(short *buffer, uint_least32_t count)
             
             while (m_isPlaying && !kbhit())// && --size)
             {
-			
-			    //printf("_DEBUG: Player::play | size = %d\n", size);
+                        
+                            //printf("_DEBUG: Player::play | size = %d\n", size);
 
 
-				//printf("_DEBUG: Player::play | calling m_c64.getEventScheduler()->clock() %d times\n", sidemu::OUTPUTBUFFERSIZE);
+                                //printf("_DEBUG: Player::play | calling m_c64.getEventScheduler()->clock() %d times\n", sidemu::OUTPUTBUFFERSIZE);
                 for (int i = 0; i < sidemu::OUTPUTBUFFERSIZE; i++)
-				{
-					m_c64.getEventScheduler()->clock();
-					
-					/*for(int j = 0; j < 10; j++)
-					{
-						// wait
-					}*/
-				}
-				
-				//printf("_DEBUG: Player::play | calling clockChips()\n");				
+                                {
+                                        m_c64.getEventScheduler()->clock();
+                                        
+                                        /*for(int j = 0; j < 10; j++)
+                                        {
+                                                // wait
+                                        }*/
+                                }
+                                
+                                //printf("_DEBUG: Player::play | calling clockChips()\n");                              
                 //m_mixer.clockChips();
-				//printf("_DEBUG: Player::play | calling resetBufs()\n");				
+                                //printf("_DEBUG: Player::play | calling resetBufs()\n");                               
                 //m_mixer.resetBufs();
-				//printf("_DEBUG: Player::play | clockChips() and resetBufs() completed\n");
+                                //printf("_DEBUG: Player::play | clockChips() and resetBufs() completed\n");
             }
         }
     }

@@ -39,9 +39,6 @@
 
 bool InnovBuilder::m_initialised = false;
 
-
-u32 InnovBuilder::m_timer_tick;
-
 InnovBuilder::InnovBuilder (const char * const name) :
     sidbuilder (name)
 {
