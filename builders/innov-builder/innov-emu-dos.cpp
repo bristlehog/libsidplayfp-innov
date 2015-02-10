@@ -41,7 +41,7 @@
 #define PC_TIMER_DIVIDER 16
 #define PC_TIMER_FREQ (NTSC_MASTER_CLOCK/12)
 
-#define PC_TIMER_INTERRUPT_VECTOR (0x1C)
+#define PC_TIMER_INTERRUPT_VECTOR (0x8)
 
 volatile static u32 timer_tick;
 static const u32 timer_freq = PC_TIMER_FREQ;
@@ -81,9 +81,9 @@ void (__interrupt * old_timer_isr)(void);
 static void __interrupt timer_isr(void)
 {
     timer_tick += PC_TIMER_DIVIDER;
-    if(0 == (timer_tick & 0xFFFF))
+    if(0 == (timer_tick & 0xFFFF)) {
         old_timer_isr();             /* Chain back to original interrupt */
-    else {
+    } else {
         __asm {
             mov al, 0x20
             out 0x20, al
