@@ -113,7 +113,9 @@ private:
     bool           muted[INNOV_VOICES];
 
 public:
-    static const char* getCredits();
+    static const char* getCredits() {
+        return "Innovation SSI-2001 Engine v. 1.0\n";
+    }
     
     Innov(sidbuilder *builder);
     ~Innov();
@@ -132,11 +134,12 @@ public:
     void filter(bool enable);
     void model(SidConfig::sid_model_t model SID_UNUSED) {;}
     void voice(unsigned int num, bool mute);
-    // Innov specific
-    void flush();
+    void sampling(float systemfreq SID_UNUSED, float outputfreq,
+        SidConfig::sampling_method_t method, bool fast);
 
     // Must lock the SID before using the standard functions.
     bool lock(EventContext *env);
+    
     void unlock();
 
 private:
@@ -144,7 +147,10 @@ private:
     // shoot to 100% CPU usage when song nolonger
     // writes to SID.
     void event();
+
+    // Innov specific
     void synchronize();
+    bool reset_timer();
 };
 
 #endif // INNOV_EMU_H

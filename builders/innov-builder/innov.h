@@ -52,8 +52,6 @@ public:
 
     const char *credits() const;
 
-    void flush();
-
     /**
      * enable/disable filter.
      */

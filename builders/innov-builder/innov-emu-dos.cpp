@@ -43,6 +43,7 @@
 
 #define PC_TIMER_INTERRUPT_VECTOR (0x8)
 
+
 volatile static u32 timer_tick;
 static const u32 timer_freq = PC_TIMER_FREQ;
 static u32 timer_tick_base;
@@ -56,24 +57,6 @@ static unsigned timer_refcount;
 
 const unsigned int Innov::voices = INNOV_VOICES;
 unsigned Innov::sid = 0;
-
-
-
-/*
-
-// Move these to common header file
-#define HSID_IOCTL_RESET     _IOW('S', 0, int)
-#define HSID_IOCTL_FIFOSIZE  _IOR('S', 1, int)
-#define HSID_IOCTL_FIFOFREE  _IOR('S', 2, int)
-#define HSID_IOCTL_SIDTYPE   _IOR('S', 3, int)
-#define HSID_IOCTL_CARDTYPE  _IOR('S', 4, int)
-#define HSID_IOCTL_MUTE      _IOW('S', 5, int)
-#define HSID_IOCTL_NOFILTER  _IOW('S', 6, int)
-#define HSID_IOCTL_FLUSH     _IO ('S', 7)
-#define HSID_IOCTL_DELAY     _IOW('S', 8, int)
-#define HSID_IOCTL_READ      _IOWR('S', 9, int*)
-
-*/
 
 
 void (__interrupt * old_timer_isr)(void);
@@ -94,7 +77,6 @@ static void __interrupt timer_isr(void)
 /*  Ordinarily using INT 01Ch is the preferred method, but INT 08h can
  *  also be used.
  */
-
 
 static void timer_grab(void)
 {
@@ -162,84 +144,7 @@ unsigned read_8254_count (void)
     }
     return result;
 }
-
-void start_timer(void)
-{
-    unsigned short cnt;
-
-    // setting timer channel to 2
-    outp(0x43, 0xb6);
-        
-    // computing delay to load into timer counter register
-    cnt = 1; // (unsigned short)(1193180L / 985248L);
-        
-    // setting timer counter register
-    /*outp(0x42, cnt & 0x00ff);
-    outp(0x42, (cnt &0xff00) >> 8);*/
-
-    outp(0x42, 1);
-    outp(0x42, 0);
-}
-
-
-void tm_delay(unsigned short ticks) 
-{
-    _asm 
-    {
-        push si
-        
-        mov  si, ticks
-        mov  ah, 0
-        int  1ah
-        
-        mov  bx, dx
-        add  bx, si
-        
-    delay_loop:
-        
-        int  1ah
-        cmp  dx, bx
-        jne  delay_loop
-        
-        pop  si
-    }
-        
-}
-
-void cycle_delay(unsigned short delay_cycles)
-{
-    float correction = 1.211;
-    float temp_cycles;
-    
-    unsigned short dcycles;
-
-    temp_cycles = delay_cycles / correction;
-    dcycles = ceil(temp_cycles);
-    
-    
-    start_timer();
-    tm_delay(dcycles);
-}
-
 #endif
-const char* Innov::getCredits()
-{
-    if (m_credit.empty())
-    {
-        // Setup credits
-        /*std::ostringstream ss;
-        ss << "HardSID V" << VERSION << " Engine:\n";
-        ss << "\t(C) 2001-2002 Jarno Paanenen\n";
-        m_credit = ss.str();*/
-        char ss[128];
-        
-        sprintf(ss, "Innovation SSI-2001 Engine v. 1.0\n");
-        
-        m_credit = std::string(ss, 128);
-    }   
-
-    return m_credit.c_str();
-}
 
 Innov::Innov (sidbuilder *builder) :
     sidemu(builder),
@@ -249,29 +154,10 @@ Innov::Innov (sidbuilder *builder) :
 
     timer_grab();
 /*
-    {
-        char device[20];
-        sprintf (device, "/dev/sid%u", m_instance);
-        m_handle = open (device, O_RDWR);
-        if (m_handle < 0)
-        {
-            if (m_instance == 0)
-            {
-                m_handle = open ("/dev/sid", O_RDWR);
-                if (m_handle < 0)
-                {
-                    m_error.assign("HARDSID ERROR: Cannot access \"/dev/sid\" or \"").append(device).append("\"");
-                    return;
-                }
-            }
-            else
-            {
-                m_error.assign("HARDSID ERROR: Cannot access \"").append(device).append("\"");
-                return;
-            }
-        }
-    }
+    m_error.assign("HARDSID ERROR: Cannot access \"").append(device).append("\"");
+    return;
 */
+
     m_status = true;
     reset();
 }
@@ -425,25 +311,20 @@ void Innov::filter(bool enable)
     //ioctl(m_handle, HSID_IOCTL_NOFILTER, !enable);
 }
 
-void Innov::flush()
+bool Innov::reset_timer()
 {
-    //printf("_DEBUG: Innov::flush call!\n");
-    
-    //ioctl(m_handle, HSID_IOCTL_FLUSH);
-}
-
-bool Innov::lock(EventContext* env)
-{
-    //printf("_DEBUG: Innov::lock call!\n");
-    
-    sidemu::lock(env);
-    m_context->schedule(*this, HARDSID_DELAY_CYCLES, EVENT_CLOCK_PHI1);
-
-    // TODO: set 
-    vcpu_freq = 1000000; // TODO: read actual frequency <= PC_TIMER_FREQ
     vcpu_tick_base = (u32)m_accessClk;
     timer_tick_base = timer_tick + 2;
-    //timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
+
+    
+
+    if (vcpu_freq >= PC_TIMER_FREQ || 0 == vcpu_freq) {
+        m_error = "ERROR: Innov::reset_timer() : system frequency not specified";
+        return false;
+    }
+
+    // Generate scaling factor using x86 long division
+    // timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
     __asm {
         mov edx, [timer_freq]
         xor eax, eax
@@ -452,10 +333,18 @@ bool Innov::lock(EventContext* env)
         div ecx
         mov [timer_freq_scale], eax
     }
-    //timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
 
-    printf("_DEBUG: event_frequency: %lu, scale=2**32 + %lu\n", vcpu_freq, timer_freq_scale);
+    printf("_DEBUG: event_frequency: %lu, scale = 2**32 + %lu\n", vcpu_freq, timer_freq_scale);
     return true;
+}
+
+bool Innov::lock(EventContext* env)
+{
+    //printf("_DEBUG: Innov::lock call!\n");
+
+    sidemu::lock(env);
+    m_context->schedule(*this, HARDSID_DELAY_CYCLES, EVENT_CLOCK_PHI1);
+    return reset_timer();
 }
 
 void Innov::unlock()
@@ -464,5 +353,12 @@ void Innov::unlock()
     
     m_context->cancel(*this);
     sidemu::unlock();
+}
+
+void Innov::sampling(float systemfreq, float outputfreq,
+    SidConfig::sampling_method_t method, bool fast)
+{
+    vcpu_freq = systemfreq;
+    // All other parameters ignored
 }
 

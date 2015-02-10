@@ -112,12 +112,6 @@ const char *InnovBuilder::credits() const
     return Innov::getCredits();
 }
 
-void InnovBuilder::flush()
-{
-    for (emuset_t::iterator it=sidobjs.begin(); it != sidobjs.end(); ++it)
-        static_cast<Innov*>(*it)->flush();
-}
-
 void InnovBuilder::filter(bool enable)
 {
     std::for_each(sidobjs.begin(), sidobjs.end(), applyParameter<Innov, bool>(&Innov::filter, enable));
