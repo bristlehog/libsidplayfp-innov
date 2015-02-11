@@ -138,6 +138,9 @@
     <ClCompile Include="..\test\test.cpp">
       <Filter>Source Files\app</Filter>
     </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-emu.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\sidplayfp\c64\c64.h">

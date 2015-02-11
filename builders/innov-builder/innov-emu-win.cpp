@@ -1,6 +1,7 @@
 /*
  * This file is part of libsidplayfp, a SID player engine.
  *
+ * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
  * Copyright 2011-2014 Leandro Nini <drfiemost@users.sourceforge.net>
  * Copyright 2007-2010 Antti Lankila
  * Copyright 2000-2002 Simon White
@@ -33,152 +34,113 @@
 #endif
 
 
-extern HsidDLL2 hsid2;
-const  unsigned int HardSID::voices = HARDSID_VOICES;
-unsigned int HardSID::sid = 0;
+#define _CRT_NONSTDC_NO_DEPRECATE
 
-const char* HardSID::getCredits()
+#include "innov-emu.h"
+
+#include <stdint.h>
+#include <cstdio>
+#include <sstream>
+#include <string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <dos.h>
+
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+
+
+typedef LARGE_INTEGER timer64_t;
+
+static timer64_t timer_tick;
+
+static timer64_t timer_freq;
+static timer64_t timer_tick_base;
+
+static u32 timer_freq_scale;
+static u32 vcpu_tick_base;
+
+
+u8 Innov::in(unsigned port)
 {
-    if (m_credit.empty())
-    {
-        // Setup credits
-        std::ostringstream ss;
-        ss << "HardSID V" << VERSION << " Engine:\n";
-        ss << "\t(C) 1999-2002 Simon White\n";
-        m_credit = ss.str();
+    return inp(port + INNOV_PORT);
+}
+void Innov::out(unsigned port, u8 data)
+{
+    outp(port + INNOV_PORT, data);
+}
+
+void timer_create(void)
+{
+    QueryPerformanceFrequency(&timer_freq);
+}
+
+void timer_free(void)
+{
+    // Do nothing
+}
+
+
+void Innov::wait()
+{
+    u32 vcpu_tick_target = (u32)m_accessClk - vcpu_tick_base;
+    static timer64_t timer_tick_target;
+
+    // Adjust base
+    while (vcpu_tick_target > vcpu_freq) {
+        vcpu_tick_target -= vcpu_freq;
+        vcpu_tick_base += vcpu_freq;
+        timer_tick_base.QuadPart += timer_freq.QuadPart;
     }
 
-    return m_credit.c_str();
-}
-
-HardSID::HardSID (sidbuilder *builder) :
-    sidemu(builder),
-    Event("HardSID Delay"),
-    m_instance(sid++)
-{
-    if (m_instance >= hsid2.Devices ())
-    {
-        m_error = "HARDSID WARNING: System dosen't have enough SID chips.";
-        return;
+    // timer_ticks_target = timer_tick_base + vcpu_tick_target + (vcpu_tick_target * V_SCALE >> 18);
+    __asm {
+        mov eax, [vcpu_tick_target]
+        mul [timer_freq_scale]
+        shrd eax, edx, 18
+        shr  edx, 18
+        add eax, DWORD PTR [timer_tick_base]
+        add edx, DWORD PTR[timer_tick_base + 4]
+        mov DWORD PTR [timer_tick_target], eax
+        mov DWORD PTR [timer_tick_target + 4], edx
     }
 
-    m_status = true;
-    reset ();
+    QueryPerformanceCounter(&timer_tick);
+    while ((timer_tick.QuadPart - timer_tick_target.QuadPart) < 0) {
+        // Spin
+        QueryPerformanceCounter(&timer_tick);
+    }
 }
 
-
-HardSID::~HardSID()
+bool Innov::reset_timer()
 {
-    sid--;
-}
+    vcpu_tick_base = (u32)m_accessClk;
+    QueryPerformanceCounter(&timer_tick);
+    timer_tick_base.QuadPart = timer_tick.QuadPart;
 
-void HardSID::clock()
-{
-    return;
-}
-
-uint8_t HardSID::read(uint_least8_t addr)
-{
-    event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
-    m_accessClk += cycles;
-
-    while (cycles > 0xFFFF)
-    {
-        hsid2.Delay((BYTE) m_instance, 0xFFFF);
-        cycles -= 0xFFFF;
+    if (0 == vcpu_freq) {
+        m_error = "ERROR: Innov::reset_timer() : system frequency not specified";
+        vcpu_freq = 1000000;
+        return false;
     }
 
-    return hsid2.Read((BYTE) m_instance, (WORD) cycles,
-                       (BYTE) addr);
-}
+    // Generate scaling factor using x86 long division
+    // timer_freq_scale = ((0x100000000ULL * (PC_TIMER_FREQ - vcpu_freq)) / vcpu_freq)
 
-void HardSID::write(uint_least8_t addr, uint8_t data)
-{
-    event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
-    m_accessClk += cycles;
-
-    while (cycles > 0xFFFF)
-    {
-        hsid2.Delay((BYTE) m_instance, 0xFFFF);
-        cycles -= 0xFFFF;
+    //timer_freq_scale = (timer_freq.x << 18) / vcpu_freq;
+    __asm {
+        mov eax, DWORD PTR[timer_freq]
+        mov edx, DWORD PTR[timer_freq + 4]
+        shld edx, eax, 18
+        shl eax, 18
+        div [vcpu_freq]
+        mov [timer_freq_scale], eax
     }
 
-    hsid2.Write((BYTE) m_instance, (WORD) cycles,
-                 (BYTE) addr, (BYTE) data);
-}
-
-void HardSID::reset(uint8_t volume)
-{
-    m_accessClk = 0;
-    // Clear hardsid buffers
-    hsid2.Flush ((BYTE) m_instance);
-    if (hsid2.Version >= HSID_VERSION_204)
-        hsid2.Reset2((BYTE) m_instance, volume);
-    else
-        hsid2.Reset((BYTE) m_instance);
-    hsid2.Sync((BYTE) m_instance);
-
-    if (m_context != 0)
-        m_context->schedule(*this, HARDSID_DELAY_CYCLES, EVENT_CLOCK_PHI1);
-}
-
-void HardSID::voice(unsigned int num, bool mute)
-{
-    if (hsid2.Version >= HSID_VERSION_207)
-        hsid2.Mute2((BYTE) m_instance, (BYTE) num, (BOOL) mute, FALSE);
-    else
-        hsid2.Mute((BYTE) m_instance, (BYTE) num, (BOOL) mute);
-}
-
-// Set execution environment and lock sid to it
-bool HardSID::lock(EventContext *env)
-{
-    if (hsid2.Version >= HSID_VERSION_204)
-    {
-        if (hsid2.Lock(m_instance) == FALSE)
-            return false;
-    }
-
-    sidemu::lock(env);
-    m_context->schedule(*this, HARDSID_DELAY_CYCLES, EVENT_CLOCK_PHI1);
-
+    printf("_DEBUG: event_frequency: %lu freq_scale = %lf\n", vcpu_freq, timer_freq_scale / (double)(1 << 18));
     return true;
 }
 
-// Unlock sid
-void HardSID::unlock()
-{
-    if (hsid2.Version >= HSID_VERSION_204)
-        hsid2.Unlock(m_instance);
 
-    m_context->cancel(*this);
-    sidemu::unlock();
-}
-
-void HardSID::event ()
-{
-    event_clock_t cycles = m_context->getTime (m_accessClk, EVENT_CLOCK_PHI1);
-    if (cycles < HARDSID_DELAY_CYCLES)
-    {
-        m_context->schedule(*this, HARDSID_DELAY_CYCLES - cycles,
-                  EVENT_CLOCK_PHI1);
-    }
-    else
-    {
-        m_accessClk += cycles;
-        hsid2.Delay ((BYTE) m_instance, (WORD) cycles);
-        m_context->schedule(*this, HARDSID_DELAY_CYCLES,
-                                EVENT_CLOCK_PHI1);
-    }
-}
-
-// Disable/Enable SID filter
-void HardSID::filter(bool enable)
-{
-    hsid2.Filter((BYTE) m_instance, (BOOL) enable);
-}
-
-void HardSID::flush()
-{
-    hsid2.Flush((BYTE) m_instance);
-}
