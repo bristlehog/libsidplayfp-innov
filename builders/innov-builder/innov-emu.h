@@ -149,8 +149,22 @@ private:
     void event();
 
     // Innov specific
+
+    /// Realtime wait until target time
+    void wait();
+    // Update m_accessClk and wait()
     void synchronize();
+    // Reset internal timers
     bool reset_timer();
+
+    static u8 in(unsigned port);
+    static void out(unsigned port, u8 data);
 };
+
+// Platform-dependent timer initialization/deinitialization code. Both called at most once per session
+void timer_create(void);
+void timer_free(void);
+
+extern u32 vcpu_freq;
 
 #endif // INNOV_EMU_H
