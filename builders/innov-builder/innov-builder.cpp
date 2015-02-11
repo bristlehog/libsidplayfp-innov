@@ -1,4 +1,5 @@
 /*
+ * Innovation SSI-2001 port of libsidplayfp
  * This file is part of libsidplayfp, a SID player engine.
  *
  * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>

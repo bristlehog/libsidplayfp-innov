@@ -1,46 +1,32 @@
 /*
- * This file is part of libsidplayfp, a SID player engine.
- *
- * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
- * Copyright 2011-2014 Leandro Nini <drfiemost@users.sourceforge.net>
- * Copyright 2007-2010 Antti Lankila
- * Copyright 2000-2002 Simon White
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
-
-#include "innov-emu.h"
-
-#include <cstdio>
-#include <sstream>
-#include <string>
-
-#include "innov.h"
-
-#ifdef HAVE_CONFIG_H
-#  include "config.h"
-#endif
-
+* Windows 9X - specific code for Innovation SSI-2001 port of libsidplayfp
+* This file is part of libsidplayfp, a SID player engine.
+*
+* Copyright 2015 Boris Chuprin <ej@tut.by>
+* Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
 
 #define _CRT_NONSTDC_NO_DEPRECATE
 
 #include "innov-emu.h"
+#include "innov.h"
 
+#include <string>
 #include <stdint.h>
-#include <cstdio>
-#include <sstream>
 #include <string.h>
 #include <stdio.h>
 #include <conio.h>
@@ -54,28 +40,33 @@
 
 typedef LARGE_INTEGER timer64_t;
 
-static timer64_t timer_tick;
-
 static timer64_t timer_freq;
-static timer64_t timer_tick_base;
 
-static u32 timer_freq_scale;
+static timer64_t timer_tick;
+static timer64_t timer_tick_base;
 static u32 vcpu_tick_base;
+
+// This scaling factor has 14.18 unsigned fixed-point format in order to balance wide range of possible timer frequencies with acceptable conversion precision
+static u32 timer_freq_scale;        
 
 
 u8 Innov::in(unsigned port)
 {
-    return inp(port + INNOV_PORT);
+    return (u8)inp(port + INNOV_PORT);
 }
+
+
 void Innov::out(unsigned port, u8 data)
 {
     outp(port + INNOV_PORT, data);
 }
 
+
 void timer_create(void)
 {
     QueryPerformanceFrequency(&timer_freq);
 }
+
 
 void timer_free(void)
 {
@@ -114,6 +105,7 @@ void Innov::wait()
     }
 }
 
+
 bool Innov::reset_timer()
 {
     vcpu_tick_base = (u32)m_accessClk;
@@ -142,5 +134,3 @@ bool Innov::reset_timer()
     printf("_DEBUG: event_frequency: %lu freq_scale = %lf\n", vcpu_freq, timer_freq_scale / (double)(1 << 18));
     return true;
 }
-
-

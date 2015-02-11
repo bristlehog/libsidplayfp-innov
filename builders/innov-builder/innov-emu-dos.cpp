@@ -1,32 +1,30 @@
 /*
- * This file is part of libsidplayfp, a SID player engine.
- *
- * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
- * Copyright 2011-2014 Leandro Nini <drfiemost@users.sourceforge.net>
- * Copyright 2007-2010 Antti Lankila
- * Copyright 2001-2001 by Jarno Paananen
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+* DOS-specific code for Innovation SSI-2001 port of libsidplayfp
+* This file is part of libsidplayfp, a SID player engine.
+*
+* Copyright 2015 Boris Chuprin <ej@tut.by>
+* Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
 
 #define _CRT_NONSTDC_NO_DEPRECATE
 
 #include "innov-emu.h"
 
 #include <stdint.h>
-#include <cstdio>
 #include <sstream>
 #include <string.h>
 #include <stdio.h>
@@ -38,30 +36,38 @@
 #  include "config.h"
 #endif
 
-
 #define NTSC_MASTER_CLOCK 14318180UL
 #define PC_TIMER_DIVIDER 16
 #define PC_TIMER_FREQ (NTSC_MASTER_CLOCK/12)
 
 #define PC_TIMER_INTERRUPT_VECTOR (0x8)
 
-volatile static u32 timer_tick;
-static const u32 timer_freq = PC_TIMER_FREQ;
-static u32 timer_tick_base;
-static u32 timer_freq_scale;
-static u32 vcpu_tick_base;
+static const    u32 timer_freq = PC_TIMER_FREQ;
+
+static volatile u32 timer_tick;
+static          u32 timer_tick_base;
+static          u32 vcpu_tick_base;
+
+// This scaling factor has .32 unsigned fixed-point format, with assumed integer part of 1
+// scaling formula is y = x + (x * timer_frew_scale)/2**32     Assumed: y/2 < x <= y
+static          u32 timer_freq_scale;        
+
     // TODO: Support several instances later?
+
+typedef void (__interrupt *isr_t)(void);
+static isr_t old_timer_isr;
 
 u8 Innov::in(unsigned port)
 {
-    return inp(port + INNOV_PORT);
+    return (u8)inp(port + INNOV_PORT);
 }
+
+
 void Innov::out(unsigned port, u8 data)
 {
     outp(port + INNOV_PORT, data);
 }
 
-void (__interrupt * old_timer_isr)(void);
 
 static void __interrupt timer_isr(void)
 {
@@ -96,6 +102,7 @@ void timer_create(void)
     }
 }
 
+
 void timer_free(void)
 {
     __asm {
@@ -113,6 +120,7 @@ void timer_free(void)
     _dos_setvect(PC_TIMER_INTERRUPT_VECTOR, old_timer_isr);
 
 }
+
 
 #if 0
 unsigned read_8254_count (void)
