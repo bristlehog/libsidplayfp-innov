@@ -213,7 +213,7 @@ public:
      * @param reg value of the control register
      * @return PB6/PB7 flipflop state
      */
-    inline bool getPb(uint8_t reg) const { return (reg & 0x04) ? pbToggle : (state & CIAT_OUT); }
+    inline bool getPb(uint8_t reg) const { return 0 != (reg & 0x04) ? pbToggle : 0 != (state & CIAT_OUT); }
 };
 
 void Timer::reschedule()

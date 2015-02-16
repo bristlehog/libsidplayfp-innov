@@ -1,4 +1,5 @@
 /*
+ * Innovation SSI-2001 port of libsidplayfp
  * This file is part of libsidplayfp, a SID player engine.
  *
  * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
@@ -38,9 +39,6 @@
 
 
 bool InnovBuilder::m_initialised = false;
-
-
-unsigned int InnovBuilder::m_count = 1; // To be fixed?
 
 InnovBuilder::InnovBuilder (const char * const name) :
     sidbuilder (name)
@@ -107,20 +105,12 @@ InnovBuilder_create_error:
 unsigned int InnovBuilder::availDevices() const
 {
     // Available devices
-    // @FIXME@ set equal to 1
-
-    return m_count;
+    return 1;
 }
 
 const char *InnovBuilder::credits() const
 {
     return Innov::getCredits();
-}
-
-void InnovBuilder::flush()
-{
-    for (emuset_t::iterator it=sidobjs.begin(); it != sidobjs.end(); ++it)
-        static_cast<Innov*>(*it)->flush();
 }
 
 void InnovBuilder::filter(bool enable)
@@ -231,9 +221,6 @@ int InnovBuilder::init()
     return 0;
 
 Innov_init_error:
-    /*
-    if (dll)
-        FreeLibrary (dll);
-    */
+
     return -1;
 }

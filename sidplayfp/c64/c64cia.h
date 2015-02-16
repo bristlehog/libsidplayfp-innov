@@ -52,7 +52,7 @@ protected:
 
     void portB()
     {
-        m_env.lightpen((prb | ~ddrb) & 0x10);
+        m_env.lightpen(0 != ((prb | ~ddrb) & 0x10));
     }
 
 public:
@@ -110,14 +110,14 @@ public:
         MOS6526(&(env->context ())),
         m_env(*env) {}
 
-    void poke(uint_least16_t address, uint8_t value)
+    inline void poke(uint_least16_t address, uint8_t value)
     {
-        write(address, value);
+        write((uint_least8_t)address, value);
     }
 
-    uint8_t peek(uint_least16_t address)
+    inline uint8_t peek(uint_least16_t address)
     {
-        return read(address);
+        return read((uint_least8_t)address);
     }
 };
 

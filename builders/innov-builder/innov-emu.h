@@ -1,26 +1,27 @@
 /*
- * This file is part of libsidplayfp, a SID player engine.
- *
- * Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
- * Copyright 2011-2014 Leandro Nini <drfiemost@users.sourceforge.net>
- * Copyright 2007-2010 Antti Lankila
- * Copyright 2001-2002 by Jarno Paananen
- * Copyright 2000-2002 Simon White
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+* This file is part of libsidplayfp, a SID player engine.
+*
+* Copyright 2015 Boris Chuprin <ej@tut.by>
+* Copyright 2014-2015 Pavel Ageev <pageev@mail.ru>
+* Copyright 2011-2014 Leandro Nini <drfiemost@users.sourceforge.net>
+* Copyright 2007-2010 Antti Lankila
+* Copyright 2001-2002 by Jarno Paananen
+* Copyright 2000-2002 Simon White
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
 
 #ifndef INNOV_EMU_H
 #define INNOV_EMU_H
@@ -29,6 +30,7 @@
 #include "../../sidplayfp/sidemu.h"
 #include "../../sidplayfp/EventScheduler.h"
 #include "../../sidplayfp/siddefs.h"
+#include "innov.h"
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -39,62 +41,13 @@
 class sidbuilder;
 
 #ifdef _WIN32
-
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-
-#define HSID_VERSION_MIN (WORD) 0x0200
-#define HSID_VERSION_204 (WORD) 0x0204
-#define HSID_VERSION_207 (WORD) 0x0207
-
-
-//**************************************************************************
-// Version 2 Interface
-typedef void (CALLBACK* HsidDLL2_Delay_t)   (BYTE deviceID, WORD cycles);
-typedef BYTE (CALLBACK* HsidDLL2_Devices_t) ();
-typedef void (CALLBACK* HsidDLL2_Filter_t)  (BYTE deviceID, BOOL filter);
-typedef void (CALLBACK* HsidDLL2_Flush_t)   (BYTE deviceID);
-typedef void (CALLBACK* HsidDLL2_Mute_t)    (BYTE deviceID, BYTE channel, BOOL mute);
-typedef void (CALLBACK* HsidDLL2_MuteAll_t) (BYTE deviceID, BOOL mute);
-typedef void (CALLBACK* HsidDLL2_Reset_t)   (BYTE deviceID);
-typedef BYTE (CALLBACK* HsidDLL2_Read_t)    (BYTE deviceID, WORD cycles, BYTE SID_reg);
-typedef void (CALLBACK* HsidDLL2_Sync_t)    (BYTE deviceID);
-typedef void (CALLBACK* HsidDLL2_Write_t)   (BYTE deviceID, WORD cycles, BYTE SID_reg, BYTE data);
-typedef WORD (CALLBACK* HsidDLL2_Version_t) ();
-
-// Version 2.04 Extensions
-typedef BOOL (CALLBACK* HsidDLL2_Lock_t)    (BYTE deviceID);
-typedef void (CALLBACK* HsidDLL2_Unlock_t)  (BYTE deviceID);
-typedef void (CALLBACK* HsidDLL2_Reset2_t)  (BYTE deviceID, BYTE volume);
-
-// Version 2.07 Extensions
-typedef void (CALLBACK* HsidDLL2_Mute2_t)   (BYTE deviceID, BYTE channel, BOOL mute, BOOL manual);
-
-/*
-struct HsidDLL2
-{
-    HINSTANCE          Instance;
-    HsidDLL2_Delay_t   Delay;
-    HsidDLL2_Devices_t Devices;
-    HsidDLL2_Filter_t  Filter;
-    HsidDLL2_Flush_t   Flush;
-    HsidDLL2_Lock_t    Lock;
-    HsidDLL2_Unlock_t  Unlock;
-    HsidDLL2_Mute_t    Mute;
-    HsidDLL2_Mute2_t   Mute2;
-    HsidDLL2_MuteAll_t MuteAll;
-    HsidDLL2_Reset_t   Reset;
-    HsidDLL2_Reset2_t  Reset2;
-    HsidDLL2_Read_t    Read;
-    HsidDLL2_Sync_t    Sync;
-    HsidDLL2_Write_t   Write;
-    WORD               Version;
-};
-*/
-
 #endif // _WIN32
 
 #define INNOV_VOICES 3
-// Approx 60ms
+
+// Approx 60ms TODO: Necessary?
 #define HARDSID_DELAY_CYCLES 60000
 
 /***************************************************************************
@@ -105,23 +58,17 @@ class Innov : public sidemu, private Event
 private:
     friend class InnovBuilder;
 
-    // HardSID specific data
-#ifndef _WIN32
-    static         bool m_sidFree[16];
-    int            m_handle;
-#endif
-
     static const unsigned int voices;
     static       unsigned int sid;
 
     // Must stay in this order
     bool           muted[INNOV_VOICES];
-    unsigned int   m_instance;
 
 public:
-    static const char* getCredits();
-
-public:
+    static const char* getCredits() {
+        return "Innovation SSI-2001 Engine v. 1.1\n";
+    }
+    
     Innov(sidbuilder *builder);
     ~Innov();
 
@@ -139,11 +86,12 @@ public:
     void filter(bool enable);
     void model(SidConfig::sid_model_t model SID_UNUSED) {;}
     void voice(unsigned int num, bool mute);
-    // Innov specific
-    void flush();
+    void sampling(float systemfreq, float outputfreq,
+        SidConfig::sampling_method_t method, bool fast);
 
     // Must lock the SID before using the standard functions.
     bool lock(EventContext *env);
+    
     void unlock();
 
 private:
@@ -151,6 +99,25 @@ private:
     // shoot to 100% CPU usage when song nolonger
     // writes to SID.
     void event();
+
+    // Innov specific
+
+    /// Realtime wait until target time
+    void wait();
+    /// Update m_accessClk and wait()
+    void synchronize();
+    /// Reset internal timers
+    bool reset_timer();
+
+    static u8 in(unsigned port);
+    static void out(unsigned port, u8 data);
 };
+
+
+// Platform-dependent timer initialization/deinitialization code. Both called at most once per session
+void timer_create(void);
+void timer_free(void);
+
+extern u32 vcpu_freq;
 
 #endif // INNOV_EMU_H

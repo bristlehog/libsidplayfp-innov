@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\lib">
+      <UniqueIdentifier>{8fa729b2-bddb-4cc5-9984-8ff3db73e479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\app">
+      <UniqueIdentifier>{b857cf07-6ab3-4aa7-992d-90426ec2b9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\C64">
+      <UniqueIdentifier>{d730ec03-abff-4031-9a51-ef476ce07d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\player">
+      <UniqueIdentifier>{cece3128-d8f7-4df5-8975-9de7f7433a2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\C64\CIA">
+      <UniqueIdentifier>{bd71ea81-d2f2-47b5-9180-ab323bfd46cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\C64\CPU">
+      <UniqueIdentifier>{4ae839ca-6965-441b-890f-c4a28c6979b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\C64\VIC_II">
+      <UniqueIdentifier>{defbfa75-c267-4eab-833a-643e7a119b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\C64\Banks">
+      <UniqueIdentifier>{ab6c9821-ee5a-4c3d-b740-2eb2a18341dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sidtune">
+      <UniqueIdentifier>{8ed765b8-1017-4b36-9a99-5fd4724db925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\MD5">
+      <UniqueIdentifier>{bae29a19-aa88-47f4-8647-ec0456aa9ba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\innov">
+      <UniqueIdentifier>{03154dde-7943-475d-9103-79b579ce64c8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sidplayfp\c64\c64.cpp">
+      <Filter>Source Files\lib\C64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\CIA\mos6526.cpp">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\CIA\timer.cpp">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\CIA\tod.cpp">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\mmu.cpp">
+      <Filter>Source Files\lib\C64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\config.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\EventScheduler.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\mixer.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\player.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\psiddrv.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\reloc65.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidbuilder.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\SidConfig.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidplayfp.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\SidTune.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-emu-dos.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-emu-unix.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-emu-win.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-builder.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\CPU\mos6510.cpp">
+      <Filter>Source Files\lib\C64\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\c64\VIC_II\mos656x.cpp">
+      <Filter>Source Files\lib\C64\VIC_II</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\MUS.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\p00.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\prg.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\PSID.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\SidTuneBase.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidtune\SidTuneTools.cpp">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sidplayfp\sidemu.cpp">
+      <Filter>Source Files\lib\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\MD5\MD5.cpp">
+      <Filter>Source Files\lib\MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\test.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\builders\innov-builder\innov-emu.cpp">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sidplayfp\c64\c64.h">
+      <Filter>Source Files\lib\C64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CIA\mos6526.h">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CIA\timer.h">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CIA\tod.h">
+      <Filter>Source Files\lib\C64\CIA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\event.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\EventScheduler.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\mixer.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\player.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\psiddrv.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\reloc65.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\romCheck.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidbuilder.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\SidConfig.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\siddefs.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidemu.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidendian.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\SidInfo.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\SidInfoImpl.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidmd5.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidmemory.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidplayfp.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidrandom.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\SidTune.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\SidTuneInfo.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidversion.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\stringutils.h">
+      <Filter>Source Files\lib\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\builders\innov-builder\innov.h">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClInclude>
+    <ClInclude Include="..\builders\innov-builder\innov-emu.h">
+      <Filter>Source Files\lib\innov</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CPU\flags.h">
+      <Filter>Source Files\lib\C64\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CPU\mos6510.h">
+      <Filter>Source Files\lib\C64\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CPU\mos6510debug.h">
+      <Filter>Source Files\lib\C64\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\CPU\opcodes.h">
+      <Filter>Source Files\lib\C64\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\VIC_II\lightpen.h">
+      <Filter>Source Files\lib\C64\VIC_II</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\VIC_II\mos656x.h">
+      <Filter>Source Files\lib\C64\VIC_II</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\VIC_II\sprites.h">
+      <Filter>Source Files\lib\C64\VIC_II</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\Bank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\ColorRAMBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\DisconnectedBusBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\ExtraSidBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\IOBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\NullSid.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\SidBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\SystemRAMBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\SystemROMBanks.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\c64\Banks\ZeroRAMBank.h">
+      <Filter>Source Files\lib\C64\Banks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\MUS.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\p00.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\prg.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\PSID.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\SidTuneBase.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\SidTuneCfg.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\SidTuneInfoImpl.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\SidTuneTools.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sidplayfp\sidtune\SmartPtr.h">
+      <Filter>Source Files\lib\sidtune</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\MD5\MD5.h">
+      <Filter>Source Files\lib\MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\MD5\MD5_Defs.h">
+      <Filter>Source Files\lib\MD5</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

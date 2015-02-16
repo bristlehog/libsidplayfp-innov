@@ -134,7 +134,7 @@ void c64::setBaseSid(c64sid *s)
 
 bool c64::addExtraSid(c64sid *s, int address)
 {
-    std::pair<std::map<int, ExtraSidBank*>::iterator,bool> ret;
+    //std::pair<std::map<int, ExtraSidBank*>::iterator,bool> ret;
 
     // Check for valid address in the IO area range ($dxxx)
     if ((address & 0xf000) != 0xd000)
@@ -156,8 +156,10 @@ bool c64::addExtraSid(c64sid *s, int address)
     }
     else
     {
-        ret = extraSidBanks.insert(it, sidBankMap_t::value_type(idx, new ExtraSidBank()));
-        ExtraSidBank *extraSidBank = ret.first->second;
+        //ExtraSidBank *extraSidBank = new ExtraSidBank();
+        //ret = 
+        extraSidBanks.insert(it, sidBankMap_t::value_type(idx, new ExtraSidBank()));
+        ExtraSidBank *extraSidBank = extraSidBanks[idx];
         extraSidBank->resetSIDMapper(ioBank.getBank(idx));
         ioBank.setBank(idx, extraSidBank);
         extraSidBank->addSID(s, address);
